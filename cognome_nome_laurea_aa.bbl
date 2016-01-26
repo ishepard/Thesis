@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{easyrtc}
+Easyrtc.
+\newblock https://easyrtc.com/docs/guides/.
+
+\bibitem{started_with_webrtc}
+Getting started with webrtc.
+\newblock http://www.html5rocks.com/en/tutorials/webrtc/basics/.
+
+\bibitem{webrtc_infrastructure}
+Webrtc in the real world: Stun, turn and signaling.
+\newblock http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/.
+
+\bibitem{sdp}
+Google.
+\newblock Sdp for the webrtc.
+\newblock {\em Internet-Draft}, August 04, 2015.
+
+\bibitem{jsep}
+Google.
+\newblock Javascript session establishment protocol.
+\newblock {\em Internet-Draft}, February 25, 2013.
+
+\bibitem{nat}
+P.~Srisuresh and M.~Holdrege.
+\newblock {\em ip network address translator (nat) terminology and
+  considerations}.
+\newblock Rfc-2663, 1999.
+
+\end{thebibliography}

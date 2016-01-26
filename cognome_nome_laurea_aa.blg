@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: cognome_nome_laurea_aa.aux
+The style file: plain.bst
+Database file #1: biblio.bib
+Warning--to sort, need author or key in started_with_webrtc
+Warning--to sort, need author or key in easyrtc
+Warning--to sort, need author or key in webrtc_infrastructure
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            519 strings with 4527 characters,
+and the built_in function-call counts, 1156 in all, are:
+= -- 107
+> -- 30
+< -- 0
++ -- 14
+- -- 8
+* -- 45
+:= -- 182
+add.period$ -- 15
+call.type$ -- 6
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 53
+empty$ -- 126
+format.name$ -- 8
+if$ -- 256
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 4
+newline$ -- 30
+num.names$ -- 6
+pop$ -- 41
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 45
+stack$ -- 0
+substring$ -- 30
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 3
+while$ -- 6
+width$ -- 7
+write$ -- 53
+(There were 3 warnings)
