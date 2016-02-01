@@ -21,6 +21,7 @@
 \usepackage{hyperref}
 \usepackage[paperheight=29.7cm,paperwidth=21cm,outer=1.5cm,inner=2.5cm,top=2cm,bottom=2cm]{geometry} % per definizione layout
 \usepackage{titlesec} % per formato custom dei titoli dei capitoli
+\usepackage[ruled,vlined]{algorithm2e}
 
 %%%%%%%%%%%%%%
 % supporto lettere accentate
@@ -39,7 +40,8 @@
   \pagenumbering{gobble} 
   \input{pagina_iniziale}
 
-  \clearpage
+  % \clearpage
+  \cleardoublepage
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +76,8 @@
 
     % indice
     \tableofcontents
-    \clearpage
+    % \clearpage
+    \cleardoublepage
     
     
           
@@ -82,7 +85,7 @@
     \begingroup
       % nessuna interruzione di pagina tra capitoli
       % ridefinizione dei comandi di clear page
-      \renewcommand{\cleardoublepage}{} 
+      % \renewcommand{\cleardoublepage}{} 
       \renewcommand{\clearpage}{} 
       % redefinizione del formato del titolo del capitolo
       % da formato
@@ -101,6 +104,7 @@
       % sommario
       \input{sommario}
       \newpage
+      \cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nota
@@ -125,7 +129,10 @@
       \input{webrtc}
       \newpage
       \input{tracker}
+      \newpage
+      \cleardoublepage
       \input{wormhole}
+      \newpage
       \input{evaluation}
       %\input{capitolo4}
       
@@ -140,6 +147,7 @@
     % stile con ordinamento alfabetico in funzione degli autori
     \bibliographystyle{plain}
     \bibliography{biblio}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nota

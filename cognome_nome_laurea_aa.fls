@@ -59,6 +59,14 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/ucs/utf8x.def
@@ -177,6 +185,9 @@ INPUT ./images/tracker.pdf
 INPUT ./images/tracker.pdf
 INPUT wormhole.tex
 INPUT wormhole.tex
+INPUT images/overlay.pdf
+INPUT ./images/overlay.pdf
+INPUT ./images/overlay.pdf
 INPUT evaluation.tex
 INPUT evaluation.tex
 INPUT cognome_nome_laurea_aa.bbl
@@ -188,6 +199,7 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb

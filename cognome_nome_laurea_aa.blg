@@ -3,48 +3,73 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: cognome_nome_laurea_aa.aux
 The style file: plain.bst
 Database file #1: biblio.bib
+Repeated entry---line 49 of file biblio.bib
+ : @conference{spotify
+ :                    ,
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in started_with_webrtc
 Warning--to sort, need author or key in easyrtc
 Warning--to sort, need author or key in webrtc_infrastructure
-You've used 6 entries,
+Name 1 in "M. Jelasity, S. Voulgaris, R. Guerraoui, A.-M. Kermarrec, and M. van Steen" has a comma at the end for entry gossip_protocol
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "M. Jelasity, S. Voulgaris, R. Guerraoui, A.-M. Kermarrec, and M. van Steen" for entry gossip_protocol
+while executing---line 1049 of file plain.bst
+Name 1 in "D. Stutzbach, R. Rejaie, N. Duffield, S. Sen, and W. Willinger" has a comma at the end for entry rw
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "D. Stutzbach, R. Rejaie, N. Duffield, S. Sen, and W. Willinger" for entry rw
+while executing---line 1049 of file plain.bst
+Name 1 in "A. Payberah, J. Dowling, and S. Haridi" has a comma at the end for entry gozar
+while executing---line 1049 of file plain.bst
+Name 1 in "A. Payberah, J. Dowling, and S. Haridi" has a comma at the end for entry gozar
+while executing---line 1090 of file plain.bst
+Warning--empty year in metropolis
+Name 1 in "D. Stutzbach, R. Rejaie, N. Duffield, S. Sen, and W. Willinger" has a comma at the end for entry rw
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "D. Stutzbach, R. Rejaie, N. Duffield, S. Sen, and W. Willinger" for entry rw
+while executing---line 1090 of file plain.bst
+Name 1 in "M. Jelasity, S. Voulgaris, R. Guerraoui, A.-M. Kermarrec, and M. van Steen" has a comma at the end for entry gossip_protocol
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "M. Jelasity, S. Voulgaris, R. Guerraoui, A.-M. Kermarrec, and M. van Steen" for entry gossip_protocol
+while executing---line 1090 of file plain.bst
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            519 strings with 4527 characters,
-and the built_in function-call counts, 1156 in all, are:
-= -- 107
-> -- 30
-< -- 0
-+ -- 14
-- -- 8
-* -- 45
-:= -- 182
-add.period$ -- 15
-call.type$ -- 6
-change.case$ -- 21
+            563 strings with 5857 characters,
+and the built_in function-call counts, 3740 in all, are:
+= -- 353
+> -- 134
+< -- 2
++ -- 54
+- -- 40
+* -- 177
+:= -- 582
+add.period$ -- 39
+call.type$ -- 14
+change.case$ -- 60
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 53
-empty$ -- 126
-format.name$ -- 8
-if$ -- 256
+cite$ -- 18
+duplicate$ -- 188
+empty$ -- 362
+format.name$ -- 40
+if$ -- 839
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 4
-newline$ -- 30
-num.names$ -- 6
-pop$ -- 41
+int.to.str$ -- 14
+missing$ -- 13
+newline$ -- 70
+num.names$ -- 22
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 16
+purify$ -- 48
 quote$ -- 0
-skip$ -- 45
+skip$ -- 142
 stack$ -- 0
-substring$ -- 30
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 137
+swap$ -- 46
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 22
-warning$ -- 3
-while$ -- 6
-width$ -- 7
-write$ -- 53
-(There were 3 warnings)
+type$ -- 52
+warning$ -- 4
+while$ -- 26
+width$ -- 16
+write$ -- 137
+(There were 11 error messages)

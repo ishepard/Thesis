@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.5)  26 JAN 2016 16:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.5)  30 JAN 2016 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -213,7 +213,60 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 \titlewidthlast=\dimen122
 \titlewidthfirst=\dimen123
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count102
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+********************************************************
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (cfiorio@um2.fr)
+********************************************************
+\skiptotal=\skip46
+\skiplinenumber=\skip47
+\skiprule=\skip48
+\skiphlne=\skip49
+\skiptext=\skip50
+\skiplength=\skip51
+\algomargin=\skip52
+\skipalgocfslide=\skip53
+\algowidth=\dimen124
+\inoutsize=\dimen125
+\inoutindent=\dimen126
+\interspacetitleruled=\dimen127
+\interspacealgoruled=\dimen128
+\interspacetitleboxruled=\dimen129
+\algocf@inoutbox=\box30
+\algocf@inputbox=\box31
+\AlCapSkip=\skip54
+\AlCapHSkip=\skip55
+\algoskipindent=\skip56
+\algocf@nlbox=\box32
+\algocf@hangingbox=\box33
+\algocf@untilbox=\box34
+\algocf@skipuntil=\skip57
+\algocf@capbox=\box35
+\algoheightruledefault=\skip58
+\algoheightrule=\skip59
+\algotitleheightruledefault=\skip60
+\algotitleheightrule=\skip61
+\c@algocfline=\count103
+\c@algocfproc=\count104
+\c@algocf=\count105
+\algocf@algoframe=\box36
+\algocf@algobox=\box37
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
@@ -227,7 +280,7 @@ Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
-\uc@secondtry=\count102
+\uc@secondtry=\count106
 \uc@combtoks=\toks19
 \uc@combtoksb=\toks20
 \uc@temptokena=\toks21
@@ -240,16 +293,16 @@ Language: italian 2015/03/26 v1.3n Italian support from the babel system
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/09/25 3.9l Babel common definitions
-\babel@savecnt=\count103
-\U@D=\dimen124
+\babel@savecnt=\count107
+\U@D=\dimen130
 )
-\it@lettering=\count104
-\it@doublequoteactive=\count105
-\it@ISOcompliance=\count106
+\it@lettering=\count108
+\it@doublequoteactive=\count109
+\it@ISOcompliance=\count110
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count107
+\etb@tempcnta=\count111
 )
 
 LaTeX Warning: Unused global option(s):
@@ -258,33 +311,33 @@ LaTeX Warning: Unused global option(s):
 (./cognome_nome_laurea_aa.aux)
 \openout1 = `cognome_nome_laurea_aa.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen125
-\scratchbox=\box30
-\nofMPsegments=\count109
-\nofMParguments=\count110
+\scratchcounter=\count112
+\scratchdimen=\dimen131
+\scratchbox=\box38
+\nofMPsegments=\count113
+\nofMParguments=\count114
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen126
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen132
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
 \everyMPtoPDFconversion=\toks23
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -301,8 +354,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 36.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring OFF on input line 37.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -310,11 +363,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count114
+\c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 37.
+LaTeX Info: Redefining \pageref on input line 37.
+LaTeX Info: Redefining \nameref on input line 37.
 
 (./cognome_nome_laurea_aa.out) (./cognome_nome_laurea_aa.out)
 \@outlinefile=\write3
@@ -358,8 +411,8 @@ LaTeX Info: Redefining \nameref on input line 36.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-LaTeX Info: Redefining \it@ocap on input line 36.
-LaTeX Info: Redefining \it@ccap on input line 36.
+LaTeX Info: Redefining \it@ocap on input line 37.
+LaTeX Info: Redefining \it@ccap on input line 37.
 
 
 File italian.ldf warning: 
@@ -367,7 +420,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 36.
+italian.ldf    on input line 37.
 
 (./pagina_iniziale.tex
 Package epstopdf Info: Source file: <logo_unitn_black_center.eps>
@@ -382,7 +435,7 @@ s-converted-to.pdf logo_unitn_black_center.eps>
 (epstopdf)             \includegraphics on input line 7.
 Package epstopdf Info: Output file is already uptodate.
 
-<logo_unitn_black_center-eps-converted-to.pdf, id=51, 293.095pt x 126.4725pt>
+<logo_unitn_black_center-eps-converted-to.pdf, id=59, 293.095pt x 126.4725pt>
 File: logo_unitn_black_center-eps-converted-to.pdf Graphic file (type pdf)
 
 <use logo_unitn_black_center-eps-converted-to.pdf>
@@ -402,13 +455,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo_
-unitn_black_center-eps-converted-to.pdf>] (./ringraziamenti.tex)pdfTeX warning 
-(ext4): destination with the same identifier (name{page.}) has been already use
-d, duplicate ignored
+unitn_black_center-eps-converted-to.pdf>]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52   \clearpage
-                  [2
+l.44   \cleardoublepage
+                        [2
+
+] (./ringraziamenti.tex)pdfTeX warning (ext4): destination with the same identi
+fier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.54   \clearpage
+                  [3]pdfTeX warning (ext4): destination with the same identifie
+r (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.59   \mainmatter
+                   [4
+
 
 ] (./cognome_nome_laurea_aa.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -423,7 +488,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1
 
-
+] [2
 
 ] (./sommario.tex
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-0.def
@@ -436,35 +501,33 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
-) [2
-
-]
+) [3] [4]
 (./webrtc.tex
 Capitolo 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 6.
-<images/webrtcArchitecture.png, id=97, 742.775pt x 483.8075pt>
+<images/webrtcArchitecture.png, id=122, 742.775pt x 483.8075pt>
 File: images/webrtcArchitecture.png Graphic file (type png)
 
 <use images/webrtcArchitecture.png>
 Package pdftex.def Info: images/webrtcArchitecture.png used on input line 33.
 (pdftex.def)             Requested size: 483.69687pt x 315.06174pt.
- [3] [4 <./images/webrtcArchitecture.png>]
-<images/jsep.png, id=121, 837.1275pt x 521.95pt>
+ [5] [6 <./images/webrtcArchitecture.png>]
+<images/jsep.png, id=146, 837.1275pt x 521.95pt>
 File: images/jsep.png Graphic file (type png)
  <use images/jsep.png>
 Package pdftex.def Info: images/jsep.png used on input line 96.
 (pdftex.def)             Requested size: 483.69687pt x 301.58434pt.
- [5]
-<images/stun.png, id=133, 837.1275pt x 570.13pt>
+ [7]
+<images/stun.png, id=157, 837.1275pt x 570.13pt>
 File: images/stun.png Graphic file (type png)
  <use images/stun.png>
 Package pdftex.def Info: images/stun.png used on input line 116.
 (pdftex.def)             Requested size: 483.69687pt x 329.42291pt.
 
-<images/turn.png, id=135, 837.1275pt x 570.13pt>
+<images/turn.png, id=159, 837.1275pt x 570.13pt>
 File: images/turn.png Graphic file (type png)
  <use images/turn.png>
 Package pdftex.def Info: images/turn.png used on input line 122.
@@ -472,67 +535,78 @@ Package pdftex.def Info: images/turn.png used on input line 122.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6 <./images/jsep.png (PNG copy)>] [7 <./images/stun.png>]) [8 <./images/turn.
-png>]
+ [8 <./images/jsep.png (PNG copy)>] [9 <./images/stun.png>]) [10 <./images/turn
+.png>]
 (./tracker.tex
 Capitolo 2.
-<images/tracker.pdf, id=171, 282.05376pt x 179.67125pt>
+<images/tracker.pdf, id=196, 282.05376pt x 179.67125pt>
 File: images/tracker.pdf Graphic file (type pdf)
 
 <use images/tracker.pdf>
 Package pdftex.def Info: images/tracker.pdf used on input line 20.
 (pdftex.def)             Requested size: 483.69687pt x 308.14296pt.
-) (./wormhole.tex
+) [11] [12 <./images/tracker.pdf>] (./wormhole.tex
 Capitolo 3.
-) (./evaluation.tex
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+<images/overlay.pdf, id=272, 602.58426pt x 376.07199pt>
+File: images/overlay.pdf Graphic file (type pdf)
+
+<use images/overlay.pdf>
+Package pdftex.def Info: images/overlay.pdf used on input line 31.
+(pdftex.def)             Requested size: 483.69687pt x 301.87943pt.
+ [14 <./images/overlay.pdf>] [15]) [16]
+(./evaluation.tex
 Capitolo 4.
-[9]) (./cognome_nome_laurea_aa.bbl [10 <./images/tracker.pdf>]
-Overfull \hbox (88.14928pt too wide) in paragraph at lines 12--14
-[]\OT1/cmr/m/n/10.95 Webrtc in the real world: Stun, turn and si-gna-ling.  htt
-p://www.html5rocks.com/en/tutorials/webrtc/infrastructure/. 
+) (./cognome_nome_laurea_aa.bbl [17]
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
+[]\OT1/cmr/m/n/10.95 Webrtc in the real world: Stun, turn and si-gna-ling.
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 178.
- [11
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
+ [18
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 178.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
  (./cognome_nome_laurea_aa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 178.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 178.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
 Package rerunfilecheck Info: File `cognome_nome_laurea_aa.out' has not changed.
 
-(rerunfilecheck)             Checksum: 0EAE5FAEE3AFFC6EDE3823DE62C3C095;649.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 178.
+(rerunfilecheck)             Checksum: B1769AB45B8C781F00AE3FBC494D5D0D;805.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
- 7836 strings out of 493089
- 112384 string characters out of 6134843
- 215837 words of memory out of 5000000
- 11159 multiletter control sequences out of 15000+600000
+ 9281 strings out of 493089
+ 132701 string characters out of 6134843
+ 260074 words of memory out of 5000000
+ 12571 multiletter control sequences out of 15000+600000
  13486 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,8n,31p,1024b,539s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,13n,33p,1151b,549s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on cognome_nome_laurea_aa.pdf (13 pages, 986618 bytes).
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on cognome_nome_laurea_aa.pdf (22 pages, 1269156 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
- 42 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 398 PDF objects out of 1000 (max. 8388607)
+ 309 compressed objects within 4 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

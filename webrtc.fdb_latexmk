@@ -1,0 +1,15 @@
+# Fdb version 3
+["pdflatex"] 1453903363 "webrtc.tex" "webrtc.pdf" "webrtc" 1453903363
+  "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1136768653 768 1321e9409b4137d6fb428ac9dc956269 ""
+  "/usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf" 1428852030 31983 18aeec08f48baa3cf3508d538dd5f459 ""
+  "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
+  "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1438781486 3849858 bd5290b55a0b98f3aa23efbf4afcd048 ""
+  "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
+  "webrtc.aux" 1453903363 8 a94a2480d3289e625eea47cd1b285758 ""
+  "webrtc.tex" 1453801373 14649 fb5f41ce26ed97b77110574a0e23ea55 ""
+  (generated)
+  "webrtc.log"
+  "webrtc.pdf"

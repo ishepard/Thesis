@@ -7,6 +7,8 @@
 \BOOKMARK [2][-]{subsection.1.4.1}{EasyRTC Server}{section.1.4}% 7
 \BOOKMARK [1][-]{section.1.5}{SPOF}{chapter.1}% 8
 \BOOKMARK [0][-]{chapter.2}{Tracker}{}% 9
-\BOOKMARK [0][-]{chapter.3}{Wormhole}{}% 10
-\BOOKMARK [0][-]{chapter.4}{Evaluation}{}% 11
-\BOOKMARK [0][-]{chapter.4}{Bibliografia}{}% 12
+\BOOKMARK [0][-]{chapter.3}{Wormhole Peer Sampling Service}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Peer Sampling Service}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{WPSS: the algorithm}{chapter.3}% 12
+\BOOKMARK [0][-]{chapter.4}{Evaluation}{}% 13
+\BOOKMARK [0][-]{chapter.4}{Bibliografia}{}% 14

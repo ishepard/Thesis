@@ -1,14 +1,16 @@
 \select@language {italian}
 \select@language {italian}
-\contentsline {chapter}{Sommario}{2}{chapter*.2}
-\contentsline {chapter}{\numberline {1}WebRTC}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}WebRTC APIs}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}WebRTC: Signaling}{4}{section.1.2}
-\contentsline {section}{\numberline {1.3}WebRTC: ICE Framework}{5}{section.1.3}
-\contentsline {section}{\numberline {1.4}Back to reality: EasyRTC Framework}{7}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}EasyRTC Server}{7}{subsection.1.4.1}
-\contentsline {section}{\numberline {1.5}SPOF}{8}{section.1.5}
-\contentsline {chapter}{\numberline {2}Tracker}{9}{chapter.2}
-\contentsline {chapter}{\numberline {3}Wormhole}{9}{chapter.3}
-\contentsline {chapter}{\numberline {4}Evaluation}{9}{chapter.4}
-\contentsline {chapter}{Bibliografia}{10}{chapter.4}
+\contentsline {chapter}{Sommario}{3}{chapter*.2}
+\contentsline {chapter}{\numberline {1}WebRTC}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}WebRTC APIs}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}WebRTC: Signaling}{6}{section.1.2}
+\contentsline {section}{\numberline {1.3}WebRTC: ICE Framework}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}Back to reality: EasyRTC Framework}{9}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}EasyRTC Server}{9}{subsection.1.4.1}
+\contentsline {section}{\numberline {1.5}SPOF}{10}{section.1.5}
+\contentsline {chapter}{\numberline {2}Tracker}{11}{chapter.2}
+\contentsline {chapter}{\numberline {3}Wormhole Peer Sampling Service}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Peer Sampling Service}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}WPSS: the algorithm}{14}{section.3.2}
+\contentsline {chapter}{\numberline {4}Evaluation}{17}{chapter.4}
+\contentsline {chapter}{Bibliografia}{17}{chapter.4}

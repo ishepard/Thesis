@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{easyrtc}
 Easyrtc.
@@ -12,6 +12,29 @@ Getting started with webrtc.
 Webrtc in the real world: Stun, turn and signaling.
 \newblock http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/.
 
+\bibitem{gozar}
+J.~Dowling A.~Payberah and S.~Haridi.
+\newblock ``gozar: Nat-friendly peer sampling with one-hop distributed nat
+  traversal''.
+\newblock In {\em Distributed Applications and Interoperable Systems}, 2011.
+
+\bibitem{metropolis}
+S.~Chib and E.~Greenberg.
+\newblock ``understanding the metropolis-hastings algorithm''.
+\newblock {\em The American Statistician}, 49(4):327--335.
+
+\bibitem{rw}
+N.~Duffield S.~Sen D.~Stutzbach, R.~Rejaie and W.~Willinger.
+\newblock ``on unbiased sampling for unstructured peer-to-peer networks''.
+\newblock In {\em IEEE/ACM Transactions on Networking}, August 2009.
+
+\bibitem{croupier}
+J.~Dowling and A.~H. Payberah.
+\newblock ``shuffling with a croupier: Nat-aware peer-sampling''.
+\newblock In {\em Proceedings of The 32nd Intl. Conf. on Distributed Computing
+  Systems (ICDCS 2012)}, pages 102--111, Los Alamitos, CA, USA: IEEE Comp.
+  Soc., 2012.
+
 \bibitem{sdp}
 Google.
 \newblock Sdp for the webrtc.
@@ -21,6 +44,30 @@ Google.
 Google.
 \newblock Javascript session establishment protocol.
 \newblock {\em Internet-Draft}, February 25, 2013.
+
+\bibitem{spotify}
+G.~Kreitz and F.~Niemela.
+\newblock ``spotify – large scale, low latency, p2p music-on-demand
+  streaming''.
+\newblock In {\em Tenth IEEE Intl. Conf. on Peer-to-Peer Computing (P2P’10)},
+  August 2010.
+
+\bibitem{gossip_protocol}
+R.~Guerraoui A.-M.~Kermarrec M.~Jelasity, S.~Voulgaris and M.~van Steen.
+\newblock ``gossip-based peer sampling''.
+\newblock In {\em ACM Transactions on Computer Systems}, August 2007.
+
+\bibitem{wormhole}
+Jim~Dowling Roberto~Roberso and Mark Jelasity.
+\newblock {\em Through the Wormhole: Low Cost, Fresh Peer Sampling for the
+  Internet}.
+\newblock 13-th IEEE International Conference on Peer-to-Peer Computing, 2013.
+
+\bibitem{skype}
+N.Daswani S.Guha and R.Jain.
+\newblock ``an experimental study of the skype peer-to-peer voip system''.
+\newblock In {\em Proceedings of IPTPS}, page pp. 1–6, Santa Barbara, CA,
+  February 2006.
 
 \bibitem{nat}
 P.~Srisuresh and M.~Holdrege.
