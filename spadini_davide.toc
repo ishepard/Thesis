@@ -12,6 +12,12 @@
 \contentsline {chapter}{\numberline {3}Wormhole Peer Sampling Service}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Peer Sampling Service}{13}{section.3.1}
 \contentsline {section}{\numberline {3.2}WPSS: the algorithm}{14}{section.3.2}
-\contentsline {chapter}{\numberline {4}Project Architecture}{17}{chapter.4}
-\contentsline {chapter}{\numberline {5}Evaluation}{18}{chapter.5}
-\contentsline {chapter}{Bibliografia}{18}{chapter.5}
+\contentsline {chapter}{\numberline {4}Project Design}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Project Architecture}{17}{section.4.1}
+\contentsline {section}{\numberline {4.2}Node.js Modules}{17}{section.4.2}
+\contentsline {section}{\numberline {4.3}Special Tools}{17}{section.4.3}
+\contentsline {chapter}{\numberline {5}Evaluation}{19}{chapter.5}
+\contentsline {section}{\numberline {5.1}Experimental Setup}{19}{section.5.1}
+\contentsline {section}{\numberline {5.2}Freshness}{19}{section.5.2}
+\contentsline {section}{\numberline {5.3}Randomness}{20}{section.5.3}
+\contentsline {chapter}{Bibliografia}{20}{figure.5.7}

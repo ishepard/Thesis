@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex spadini_davide"] 1454336354 "spadini_davide.aux" "spadini_davide.bbl" "spadini_davide" 1454336356
+["bibtex spadini_davide"] 1454336354 "spadini_davide.aux" "spadini_davide.bbl" "spadini_davide" 1454410077
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "biblio.bib" 1454083156 4436 a280fd9a1ff9fb3032d1990cef688b3c ""
   "spadini_davide.aux" 1454336356 5980 dafa15440d03cc7f4ec0f3387152c128 ""
   "spadini_davide.bcf" 0 -1 0 ""
   (generated)
-  "spadini_davide.blg"
   "spadini_davide.bbl"
-["pdflatex"] 1454336355 "spadini_davide.tex" "spadini_davide.pdf" "spadini_davide" 1454336356
+  "spadini_davide.blg"
+["pdflatex"] 1454336355 "spadini_davide.tex" "spadini_davide.pdf" "spadini_davide" 1454410077
   "./images/jsep.png" 1453131886 48612 62fe016965fe12ef0df3e4b565caadd4 ""
   "./images/overlay.pdf" 1454176008 307020 ce67ecd3b55d431ed3454de27271d48e ""
   "./images/stun.png" 1453216536 93996 e9a60ff987606315569be4c69c63d586 ""
@@ -129,8 +129,8 @@
   "webrtc.tex" 1454173244 14653 3cb6e6716c6fe1277ffe4f9028c6ba31 ""
   "wormhole.tex" 1454177460 11538 3bd37c8779676943ebeb04461cf85e1d ""
   (generated)
+  "spadini_davide.out"
   "spadini_davide.log"
   "spadini_davide.pdf"
-  "spadini_davide.toc"
   "spadini_davide.aux"
-  "spadini_davide.out"
+  "spadini_davide.toc"

@@ -10,6 +10,12 @@
 \BOOKMARK [0][-]{chapter.3}{Wormhole Peer Sampling Service}{}% 10
 \BOOKMARK [1][-]{section.3.1}{Peer Sampling Service}{chapter.3}% 11
 \BOOKMARK [1][-]{section.3.2}{WPSS: the algorithm}{chapter.3}% 12
-\BOOKMARK [0][-]{chapter.4}{Project Architecture}{}% 13
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 14
-\BOOKMARK [0][-]{chapter.5}{Bibliografia}{}% 15
+\BOOKMARK [0][-]{chapter.4}{Project Design}{}% 13
+\BOOKMARK [1][-]{section.4.1}{Project Architecture}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.2}{Node.js Modules}{chapter.4}% 15
+\BOOKMARK [1][-]{section.4.3}{Special Tools}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 17
+\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.2}{Freshness}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.3}{Randomness}{chapter.5}% 20
+\BOOKMARK [0][-]{figure.5.7}{Bibliografia}{}% 21

@@ -1,4 +1,75 @@
+%!TEX root = spadini_davide.tex
+
 \chapter{Evaluation}
 \label{cha:evaluation}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed nunc orci. Aliquam nec nisl vitae sapien pulvinar dictum quis non urna. Suspendisse at dui a erat aliquam vestibulum. Quisque ultrices pellentesque pellentesque. Pellentesque egestas quam sed blandit tempus. Sed congue nec risus posuere euismod. Maecenas ut lacus id mauris sagittis egestas a eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque at ultrices tellus. Ut eu purus eget sem iaculis ultricies sed non lorem. Curabitur gravida dui eget ex vestibulum venenatis. Phasellus gravida tellus velit, non eleifend justo lobortis eget. 
+We now want to evaluate our implementation of the WPSS algorithm, and compare what we obtain with the original papers~\cite{wormhole} in order to confirm or contest their results. We tested our implementation both in deployment and in simulation, however due to the low number of nodes in the real environment we report only the results obtained in simulation. We want to show that our implementation provides the desirable PSS properties, such as fresh samples, randomness, and low cost in a real environment, but also we want to test robustness under different level of churn.
 
+The structure is shown in Fig.~\ref{fig:overlay}, the base overlay is a random undirected graph that is also NAT-friendly, where private nodes are connected to public nodes, and public nodes are connected to one another. The bootstrap service component provides addresses of random public nodes that are used to build the base overlay and to create wormholes. It is implemented as a central server, the tracker. The base overlay service strives to keep the overlay connected repairing broken links, thus, maintaining a fixed number of outgoing links at each node. Every node maintains 20 links to random public nodes, however these links are bidirectional, so the effective average degree is 40. 
+
+We set $TTL = 100$. As discussed in~\cite{wormhole} and also as we will see later, WPSS messages will always terminate much sooner in most practical settings, so the TTL is not a critical parameter.
+
+\section{Experimental Setup}
+\label{sec:exp_setup}
+For simulations, we implemented WPSS using the \textbf{Hivejs-Framework-Sim} provided by the Hive Streaming company. It is very configurable, and allow us to define the network size, the bandwidth of the nodes but also to test the implementation under different level of churn or latency. All experiments are averaged over 4 runs. We applied the same settings as in the original paper, which are: 
+
+\begin{itemize}
+	\item the view size (the number of freshest random samples a node remembers) is set to 50
+	\item we set $\Delta = 1$ second
+	\item we use a scenario of $N = 1000$ nodes that join following a Poisson distribution with a mean inter-arrival time of 100 milliseconds
+\end{itemize}
+
+In all simulations 20\% of the nodes were public and 80\% were private, which, according to~\cite{wormhole}, reflects the distribution observed in the commercial deployments of their P2P application.
+
+\section{Freshness}
+\label{sec:eval_freshness}
+In this experiment we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Fig.~\ref{fig:my_average_hop_count} shows our result, while in Fig.~\ref{fig:paper_average_hop_count} shows their test. As we can see the result is almost identical, this means that our implementation does not altered this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since higher is this timer, more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. Another important result here is that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every $10$ rounds of the algorithm). 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count}\caption{Average hop count}
+  \label{fig:my_average_hop_count}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_average_hop_count}\caption{Test of average hop count reported in the paper}
+  \label{fig:paper_average_hop_count}
+\end{figure}
+
+\section{Randomness}
+\label{sec:eval_randomness}
+As in \cite{wormhole}, we evaluate here the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built connecting to all the samples stored at nodes. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. Obviously this results shows that the 95\% of the nodes have an in-degree included between 43 and 55, however there are some nodes that still have a quite large in-degree: these peers are the public nodes, which initially they are present in a lot of views, so they have a large in-degree. This result is a little bit different from the original paper, in which they show that all the nodes have an in-degree included between 43 and 60. This is probably due to the environment, because they tried this set of tests in their the deployed system, with 12000 nodes and for a lot of time. 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_indegree}\caption{Converged in-degree distribution}
+  \label{fig:converged_indegree}
+\end{figure}
+
+One interesting fact, that confirms that the problem is not the implementation, is shown in Fig.~\ref{fig:indegree_evolution}: as we can see the in-degree converges to 50 after 4 minutes, and the standard deviation after 8 minutes, which are exactly the same results of the original paper, shown in Fig.~\ref{fig:paper_indegree_evolution}. Looking this result, we are right to believe that running our implementation for a longer time and with an higher number of nodes could change the result obtained in the converged in-degree graph.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/indegree_evolution}\caption{In-degree evolution over time with error bars}
+  \label{fig:indegree_evolution}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_indegree_evolution}\caption{Test of in-degree evolution reported in the paper}
+  \label{fig:paper_indegree_evolution}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/clustering_coefficient_evolution}\caption{Clustering coefficient evolution for different view sizes}
+  \label{fig:clustering_coefficient_evolution}
+\end{figure}
+
+Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient evolution for different view size, as we can notice it grows with increasing the view size. In fact the higher the view, the higher the number of connections. This result is the same on the original paper. We can also notice that it converges roughly at the same rate as the in-degree.
+The last test is shown in Fig.\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than that of the random graph by a constant factor, which is due to the fact that WPSS does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_clustering_coefficient}\caption{Converged clustering coefficient for in- creasing view sizes}
+  \label{fig:converged_clustering_coefficient}
+\end{figure}
