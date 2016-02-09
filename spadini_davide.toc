@@ -20,4 +20,6 @@
 \contentsline {section}{\numberline {5.1}Experimental Setup}{19}{section.5.1}
 \contentsline {section}{\numberline {5.2}Freshness}{19}{section.5.2}
 \contentsline {section}{\numberline {5.3}Randomness}{20}{section.5.3}
-\contentsline {chapter}{Bibliografia}{20}{figure.5.7}
+\contentsline {section}{\numberline {5.4}Inter-arrival Time of Advertisements}{20}{section.5.4}
+\contentsline {section}{\numberline {5.5}Robustness to Different Churn Patterns}{21}{section.5.5}
+\contentsline {chapter}{Bibliografia}{22}{figure.5.13}

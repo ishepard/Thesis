@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.5)  4 FEB 2016 16:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.5)  9 FEB 2016 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,7 +435,7 @@ s-converted-to.pdf logo_unitn_black_center.eps>
 (epstopdf)             \includegraphics on input line 7.
 Package epstopdf Info: Output file is already uptodate.
 
-<logo_unitn_black_center-eps-converted-to.pdf, id=88, 293.095pt x 126.4725pt>
+<logo_unitn_black_center-eps-converted-to.pdf, id=96, 293.095pt x 126.4725pt>
 File: logo_unitn_black_center-eps-converted-to.pdf Graphic file (type pdf)
 
 <use logo_unitn_black_center-eps-converted-to.pdf>
@@ -508,26 +508,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 6.
-<images/webrtcArchitecture.png, id=158, 742.775pt x 483.8075pt>
+<images/webrtcArchitecture.png, id=168, 742.775pt x 483.8075pt>
 File: images/webrtcArchitecture.png Graphic file (type png)
 
 <use images/webrtcArchitecture.png>
 Package pdftex.def Info: images/webrtcArchitecture.png used on input line 33.
 (pdftex.def)             Requested size: 483.69687pt x 315.06174pt.
  [5] [6 <./images/webrtcArchitecture.png>]
-<images/jsep.png, id=183, 837.1275pt x 521.95pt>
+<images/jsep.png, id=193, 837.1275pt x 521.95pt>
 File: images/jsep.png Graphic file (type png)
  <use images/jsep.png>
 Package pdftex.def Info: images/jsep.png used on input line 96.
 (pdftex.def)             Requested size: 483.69687pt x 301.58434pt.
  [7]
-<images/stun.png, id=194, 837.1275pt x 570.13pt>
+<images/stun.png, id=204, 837.1275pt x 570.13pt>
 File: images/stun.png Graphic file (type png)
  <use images/stun.png>
 Package pdftex.def Info: images/stun.png used on input line 116.
 (pdftex.def)             Requested size: 483.69687pt x 329.42291pt.
 
-<images/turn.png, id=196, 837.1275pt x 570.13pt>
+<images/turn.png, id=206, 837.1275pt x 570.13pt>
 File: images/turn.png Graphic file (type png)
  <use images/turn.png>
 Package pdftex.def Info: images/turn.png used on input line 122.
@@ -539,7 +539,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 .png>]
 (./tracker.tex
 Capitolo 2.
-<images/tracker.pdf, id=232, 282.05376pt x 179.67125pt>
+<images/tracker.pdf, id=242, 282.05376pt x 179.67125pt>
 File: images/tracker.pdf Graphic file (type pdf)
 
 <use images/tracker.pdf>
@@ -551,7 +551,7 @@ Capitolo 3.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13]
-<images/overlay.pdf, id=308, 602.58426pt x 376.07199pt>
+<images/overlay.pdf, id=319, 602.58426pt x 376.07199pt>
 File: images/overlay.pdf Graphic file (type pdf)
 
 <use images/overlay.pdf>
@@ -560,7 +560,7 @@ Package pdftex.def Info: images/overlay.pdf used on input line 31.
  [14 <./images/overlay.pdf>] [15]) [16]
 (./architecture.tex
 Capitolo 4.
-<images/project_architecture.pdf, id=365, 853.64723pt x 697.06927pt>
+<images/project_architecture.pdf, id=375, 853.64723pt x 697.06927pt>
 File: images/project_architecture.pdf Graphic file (type pdf)
 
 <use images/project_architecture.pdf>
@@ -569,14 +569,14 @@ Package pdftex.def Info: images/project_architecture.pdf used on input line 12.
 (pdftex.def)             Requested size: 483.69687pt x 394.98297pt.
 ) [17] [18 <./images/project_architecture.pdf>] (./evaluation.tex
 Capitolo 5.
-<images/average_hop_count.png, id=427, 738.76pt x 445.665pt>
+<images/average_hop_count.png, id=437, 738.76pt x 445.665pt>
 File: images/average_hop_count.png Graphic file (type png)
 
 <use images/average_hop_count.png>
 Package pdftex.def Info: images/average_hop_count.png used on input line 29.
 (pdftex.def)             Requested size: 483.69687pt x 291.7937pt.
 
-<images/paper_average_hop_count.png, id=428, 659.46375pt x 463.7325pt>
+<images/paper_average_hop_count.png, id=438, 659.46375pt x 463.7325pt>
 File: images/paper_average_hop_count.png Graphic file (type png)
 
 <use images/paper_average_hop_count.png>
@@ -584,21 +584,21 @@ Package pdftex.def Info: images/paper_average_hop_count.png used on input line
 35.
 (pdftex.def)             Requested size: 483.69687pt x 340.1423pt.
 
-<images/converged_indegree.png, id=431, 599.841pt x 388.3308pt>
+<images/converged_indegree.png, id=441, 599.841pt x 388.3308pt>
 File: images/converged_indegree.png Graphic file (type png)
 
 <use images/converged_indegree.png>
 Package pdftex.def Info: images/converged_indegree.png used on input line 44.
 (pdftex.def)             Requested size: 483.69687pt x 313.15373pt.
  [19]
-<images/indegree_evolution.png, id=440, 600.3228pt x 375.804pt>
+<images/indegree_evolution.png, id=450, 600.3228pt x 375.804pt>
 File: images/indegree_evolution.png Graphic file (type png)
 
 <use images/indegree_evolution.png>
 Package pdftex.def Info: images/indegree_evolution.png used on input line 52.
 (pdftex.def)             Requested size: 483.69687pt x 302.7997pt.
 
-<images/paper_indegree_evolution.png, id=441, 430.60875pt x 291.0875pt>
+<images/paper_indegree_evolution.png, id=451, 430.60875pt x 291.0875pt>
 File: images/paper_indegree_evolution.png Graphic file (type png)
 
 <use images/paper_indegree_evolution.png>
@@ -606,7 +606,7 @@ Package pdftex.def Info: images/paper_indegree_evolution.png used on input line
  58.
 (pdftex.def)             Requested size: 483.69687pt x 326.98404pt.
 
-<images/clustering_coefficient_evolution.png, id=442, 574.3056pt x 373.395pt>
+<images/clustering_coefficient_evolution.png, id=452, 574.3056pt x 373.395pt>
 File: images/clustering_coefficient_evolution.png Graphic file (type png)
 
 <use images/clustering_coefficient_evolution.png>
@@ -614,25 +614,74 @@ Package pdftex.def Info: images/clustering_coefficient_evolution.png used on in
 put line 64.
 (pdftex.def)             Requested size: 483.69687pt x 314.49289pt.
 
-<images/converged_clustering_coefficient.png, id=446, 523.7166pt x 251.0178pt>
+<images/converged_clustering_coefficient.png, id=456, 523.7166pt x 251.0178pt>
 File: images/converged_clustering_coefficient.png Graphic file (type png)
 
 <use images/converged_clustering_coefficient.png>
 Package pdftex.def Info: images/converged_clustering_coefficient.png used on in
 put line 73.
 (pdftex.def)             Requested size: 483.69687pt x 231.84694pt.
-) (./spadini_davide.bbl
-[20 <./images/average_hop_count.png>] [21 <./images/paper_average_hop_count.png
-> <./images/converged_indegree.png>] [22 <./images/indegree_evolution.png> <./i
-mages/paper_indegree_evolution.png>] [23 <./images/clustering_coefficient_evolu
-tion.png> <./images/converged_clustering_coefficient.png>]
+ [20 <./images/average_hop_count.png>]
+<images/average_interarrivaltime.png, id=469, 617.6676pt x 415.3116pt>
+File: images/average_interarrivaltime.png Graphic file (type png)
+
+<use images/average_interarrivaltime.png>
+Package pdftex.def Info: images/average_interarrivaltime.png used on input line
+ 85.
+(pdftex.def)             Requested size: 483.69687pt x 325.23451pt.
+
+<images/interarrivaltime_difference.png, id=470, 668.2566pt x 474.0912pt>
+File: images/interarrivaltime_difference.png Graphic file (type png)
+
+<use images/interarrivaltime_difference.png>
+Package pdftex.def Info: images/interarrivaltime_difference.png used on input l
+ine 91.
+(pdftex.def)             Requested size: 483.69687pt x 343.15392pt.
+ [21 <./images/paper_average_hop_count.png>]
+<images/average_hop_count_flash_crowd.png, id=486, 648.5028pt x 454.3374pt>
+File: images/average_hop_count_flash_crowd.png Graphic file (type png)
+
+<use images/average_hop_count_flash_crowd.png>
+Package pdftex.def Info: images/average_hop_count_flash_crowd.png used on input
+ line 101.
+(pdftex.def)             Requested size: 483.69687pt x 338.87347pt.
+
+<images/paper_average_hop_count_flash_crowd.png, id=487, 603.25375pt x 404.5112
+5pt>
+File: images/paper_average_hop_count_flash_crowd.png Graphic file (type png)
+ <use images/paper_average_hop_count_flash_crowd.png>
+Package pdftex.def Info: images/paper_average_hop_count_flash_crowd.png used on
+ input line 107.
+(pdftex.def)             Requested size: 483.69687pt x 324.33777pt.
+
+<images/average_clustering_coefficient.png, id=488, 735.7086pt x 533.8344pt>
+File: images/average_clustering_coefficient.png Graphic file (type png)
+
+<use images/average_clustering_coefficient.png>
+Package pdftex.def Info: images/average_clustering_coefficient.png used on inpu
+t line 113.
+(pdftex.def)             Requested size: 483.69687pt x 350.9796pt.
+
+<images/average_indegree.png, id=489, 611.886pt x 400.3758pt>
+File: images/average_indegree.png Graphic file (type png)
+
+<use images/average_indegree.png>
+Package pdftex.def Info: images/average_indegree.png used on input line 119.
+(pdftex.def)             Requested size: 483.69687pt x 316.50111pt.
+) (./spadini_davide.bbl [22 <./images/converged_indegree.png>] [23 <./images/in
+degree_evolution.png> <./images/paper_indegree_evolution.png>] [24 <./images/cl
+ustering_coefficient_evolution.png> <./images/converged_clustering_coefficient.
+png>] [25 <./images/average_interarrivaltime.png> <./images/interarrivaltime_di
+fference.png>] [26 <./images/average_hop_count_flash_crowd.png> <./images/paper
+_average_hop_count_flash_crowd.png>] [27 <./images/average_clustering_coefficie
+nt.png> <./images/average_indegree.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 12--14
 []\OT1/cmr/m/n/10.95 Webrtc in the real world: Stun, turn and si-gna-ling.
  []
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
- [24
+ [28
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
@@ -640,17 +689,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 189.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 189.
 Package rerunfilecheck Info: File `spadini_davide.out' has not changed.
-(rerunfilecheck)             Checksum: EA81A3CEAFACE5EF53FAEDBFCB01ED26;1223.
+(rerunfilecheck)             Checksum: 730650C2251BA71730E798E937D285F9;1392.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 189.
  ) 
 Here is how much of TeX's memory you used:
- 9371 strings out of 493089
- 134735 string characters out of 6134843
- 261874 words of memory out of 5000000
- 12625 multiletter control sequences out of 15000+600000
+ 9423 strings out of 493089
+ 136318 string characters out of 6134843
+ 262460 words of memory out of 5000000
+ 12659 multiletter control sequences out of 15000+600000
  13486 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,33p,1426b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,13n,33p,2037b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -667,10 +716,10 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on spadini_davide.pdf (28 pages, 1930863 bytes).
+Output written on spadini_davide.pdf (32 pages, 2389218 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
- 423 compressed objects within 5 object streams
- 87 named destinations out of 1000 (max. 500000)
- 244 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 607 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 290 words of extra memory for PDF output out of 10000 (max. 10000000)
 
