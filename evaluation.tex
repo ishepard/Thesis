@@ -96,7 +96,7 @@ Now we want to verify if the \textit{acceptAd} method correctly balances samples
 \label{sec:robustness}
 In this set of experiments we want to test the robustness of our implementation under different levels of churn. We measure the average hop count, as well as the clustering coefficient and the in-degree. In the first three experiments we recreate a flash crowd scenario, in which some nodes join at the beginning and the remaining join at a later point in time. For instance, recalling that $N = 1000$, for a flash crowd scenario of 70\% of the node, 300 nodes join at time $0s$ and 700 nodes join at minute $6.5$. So after this time, the number of nodes stays constant at 1000. In Fig.\ref{fig:average_hop_count_flash_crowd} we can see that the average hop count increases with decreasing the number of nodes that join the system at time 0, in fact an advertisement will have to traverse more nodes in order to reach a peer that does not already have that sample. However at time $6.5$, when all the remaining nodes join the system, the average hop count not only it stabilizes quickly, but it converges to the same value in all the experiments. In Fig.~\ref{fig:paper_average_hop_count_flash_crowd} is shown their result and as we can see they are identical, they also stabilize at the same rate. The next test measures the clustering coefficient in a flash crowd scenario, the expected behavior is similar to the average hop count. As shown in Fig.\ref{fig:average_clustering_coefficient}, this is the case. In fact the clustering coefficient stabilizes quickly and to the same rate when all the nodes join the network. Finally, Fig.\ref{fig:average_indegree} shows the average in-degree of the nodes. As we can see after two minutes in all the experiments the nodes have in average the same in-degree, then it drops significantly at time $6.5$, this is in fact expected since a majority of the nodes join the network with in-degree equals to 0. However, it recovers quickly (about $1.30$ minutes later) and it converges to 50 in all the experiments.
 
-In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leaves the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system.
+In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leaves the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. In Fig.\ref{fig:average_hop_count_failures} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
 
 \begin{figure}[ht]
   \centering
@@ -122,4 +122,20 @@ In the next set of experiments we measure the robustness of our implementation i
   \label{fig:average_indegree}
 \end{figure}
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_failures}\caption{Average hop count}
+  \label{fig:average_hop_count_failures}
+\end{figure}
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_clustering_coefficient_failures}\caption{Average clustering coefficient}
+  \label{fig:average_clustering_coefficient_failures}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_dead_links}\caption{Average number of dead links in view}
+  \label{fig:average_dead_links}
+\end{figure}
