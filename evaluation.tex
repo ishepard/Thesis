@@ -24,54 +24,145 @@ In all simulations 20\% of the nodes is public and 80\% is private, which, accor
 \label{sec:eval_freshness}
 In this experiment we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Fig.~\ref{fig:my_average_hop_count} shows our result, while in Fig.~\ref{fig:paper_average_hop_count} shows their test. As we can see the result is almost identical, this means that our implementation does not alter this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since the higher the timer, the more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. Another important result here is that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every $10$ rounds of the algorithm). 
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count}\caption{Average hop count}
+%   \label{fig:my_average_hop_count}
+% \end{figure}
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_average_hop_count}\caption{Test of average hop count reported in the paper}
+%   \label{fig:paper_average_hop_count}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count}\caption{Average hop count}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count}
+  \caption{}
   \label{fig:my_average_hop_count}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_hop_count}
+  \caption{}
+  \label{fig:paper_average_hop_count}
+\end{subfigure}
+\caption{Measure of the average hop count, as well as the $90^{th}$ and $99^{th}$ percentile. \ref{fig:my_average_hop_count} represents our result, \ref{fig:paper_average_hop_count} is the test reported in the paper.}
+\label{fig:freshness}
 \end{figure}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_average_hop_count}\caption{Test of average hop count reported in the paper}
-  \label{fig:paper_average_hop_count}
-\end{figure}
 
 \section{Randomness}
 \label{sec:eval_randomness}
 As in \cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built connecting to all the samples stored at nodes. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. Obviously this result shows that the 95\% of the nodes have an in-degree included between 43 and 55, however there are some nodes that still have a quite large in-degree: these peers are the public nodes, which are initially present in a lot of views, so they have a large in-degree. This result is a little bit different from the original paper, in which they show that all the nodes have an in-degree included between 43 and 60. This is probably due to the environment, because they tried this set of tests in their deployed system, with 12000 nodes and for a long time. 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_indegree}\caption{Converged in-degree distribution}
+%   \label{fig:converged_indegree}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_indegree}\caption{Converged in-degree distribution}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/converged_indegree}
+  \caption{}
   \label{fig:converged_indegree}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_converged_indegree}
+  \caption{}
+  \label{fig:paper_converged_indegree}
+\end{subfigure}
+\caption{Converged in-degree distribution. \ref{fig:converged_indegree} represents our result, \ref{fig:paper_converged_indegree} is the test reported in the paper.}
+\label{fig:randomness_conv_indegree}
 \end{figure}
 
 One interesting fact, that confirms that the problem is not the implementation, is shown in Fig.~\ref{fig:indegree_evolution}: as we can see the in-degree converges to 50 after 4 minutes, and the standard deviation after 8 minutes, which are exactly the same results of the original paper, shown in Fig.~\ref{fig:paper_indegree_evolution}. If we look at this result, we are right to believe that running our implementation for a longer time and with an higher number of nodes could change the result obtained in the converged in-degree graph.
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/indegree_evolution}\caption{In-degree evolution over time with error bars}
+%   \label{fig:indegree_evolution}
+% \end{figure}
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_indegree_evolution}\caption{Test of in-degree evolution reported in the paper}
+%   \label{fig:paper_indegree_evolution}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/indegree_evolution}\caption{In-degree evolution over time with error bars}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/indegree_evolution}
+  \caption{}
   \label{fig:indegree_evolution}
-\end{figure}
-
-\begin{figure}[ht]
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_indegree_evolution}\caption{Test of in-degree evolution reported in the paper}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_indegree_evolution}
+  \caption{}
   \label{fig:paper_indegree_evolution}
+\end{subfigure}
+\caption{Measure of the in-degree evolution over time with error bars. \ref{fig:indegree_evolution} represents our result, \ref{fig:paper_indegree_evolution} is the test reported in the paper.}
+\label{fig:randomness_indegree}
 \end{figure}
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/clustering_coefficient_evolution}\caption{Clustering coefficient evolution for different view sizes}
+%   \label{fig:clustering_coefficient_evolution}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/clustering_coefficient_evolution}\caption{Clustering coefficient evolution for different view sizes}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/clustering_coefficient_evolution}
+  \caption{}
   \label{fig:clustering_coefficient_evolution}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_clustering_coefficient_evolution}
+  \caption{}
+  \label{fig:paper_clustering_coefficient_evolution}
+\end{subfigure}
+\caption{Clustering coefficient evolution over time with different view size. \ref{fig:clustering_coefficient_evolution} represents our result, \ref{fig:paper_clustering_coefficient_evolution} is the test reported in the paper.}
+\label{fig:randomness_clustering}
 \end{figure}
 
 Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient evolution for different view size, as we can notice it grows with increasing the view size. In fact the higher the view, the higher the number of connections. This result is the same on the original paper. We can also notice that it converges roughly at the same rate as the in-degree.
 The last test is shown in Fig.\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than the one of the random graph by a constant factor, which is due to the fact that WPSS does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_clustering_coefficient}\caption{Converged clustering coefficient for increasing view sizes}
+%   \label{fig:converged_clustering_coefficient}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_clustering_coefficient}\caption{Converged clustering coefficient for in- creasing view sizes}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/converged_clustering_coefficient}
+  \caption{}
   \label{fig:converged_clustering_coefficient}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_converged_clustering_coefficient}
+  \caption{}
+  \label{fig:paper_converged_clustering_coefficient}
+\end{subfigure}
+\caption{Clustering coefficient evolution over time with different view size. \ref{fig:converged_clustering_coefficient} represents our result, \ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
+\label{fig:randomness_conv_clustering}
 \end{figure}
 
 \section{Inter-arrival Time of Advertisements}
@@ -80,17 +171,54 @@ In these tests we want to measure the inter-arrival time of the advertisements, 
 
 Now we want to verify if the \textit{acceptAd} method correctly balances samples across public and private nodes. To do that, we measured the difference inter-arrival time between them. As shown in Fig.~\ref{fig:interarrivaltime_difference} this difference is very low, about $500 ms$ in the worst case in which $\Delta = 6 s$. With $\Delta$ equals to $1s$ or $3s$ the difference is lower, about $100ms$ and $200ms$, so we can confirm that the \textit{acceptAd} method successfully balances the samples between all the nodes, as well as in the original paper.
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_interarrivaltime}\caption{Average inter-arrival time for samples (terminating advertisements) at all peers}
+%   \label{fig:average_interarrivaltime}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_interarrivaltime}\caption{Average inter-arrival time for samples (terminating advertisements) at all peers}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_interarrivaltime}
+  \caption{}
   \label{fig:average_interarrivaltime}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_interarrivaltime}
+  \caption{}
+  \label{fig:paper_average_interarrivaltime}
+\end{subfigure}
+\caption{Average inter-arrival time for samples (terminating advertisements) at all peers. \ref{fig:average_interarrivaltime} represents our result, \ref{fig:paper_average_interarrivaltime} is the test reported in the paper.}
+\label{fig:ad_average_interarrivaltime}
 \end{figure}
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/interarrivaltime_difference}\caption{Difference in inter-arrival time between public and private peers}
+%   \label{fig:interarrivaltime_difference}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/interarrivaltime_difference}\caption{Difference in inter-arrival time between public and private peers}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/interarrivaltime_difference}
+  \caption{}
   \label{fig:interarrivaltime_difference}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_interarrivaltime_difference}
+  \caption{}
+  \label{fig:paper_interarrivaltime_difference}
+\end{subfigure}
+\caption{Difference in inter-arrival time between public and private peers. \ref{fig:interarrivaltime_difference} represents our result, \ref{fig:paper_interarrivaltime_difference} is the test reported in the paper.}
+\label{fig:ad_interarrivaltime_difference}
 \end{figure}
+
 
 \section{Robustness to Different Churn Patterns}
 \label{sec:robustness}
@@ -138,4 +266,13 @@ In the next set of experiments we measure the robustness of our implementation i
   \centering
   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_dead_links}\caption{Average number of dead links in view}
   \label{fig:average_dead_links}
+\end{figure}
+
+In the last two tests we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.\ref{fig:average_hop_count_churn} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. 
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_churn}\caption{Average hop count}
+  \label{fig:average_hop_count_churn}
 \end{figure}
