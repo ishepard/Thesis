@@ -222,53 +222,164 @@ Now we want to verify if the \textit{acceptAd} method correctly balances samples
 
 \section{Robustness to Different Churn Patterns}
 \label{sec:robustness}
-In this set of experiments we want to test the robustness of our implementation under different levels of churn. We measure the average hop count, as well as the clustering coefficient and the in-degree. In the first three experiments we recreate a flash crowd scenario, in which some nodes join at the beginning and the remaining join at a later point in time. For instance, recalling that $N = 1000$, for a flash crowd scenario of 70\% of the node, 300 nodes join at time $0s$ and 700 nodes join at minute $6.5$. So after this time, the number of nodes stays constant at 1000. In Fig.\ref{fig:average_hop_count_flash_crowd} we can see that the average hop count increases with decreasing the number of nodes that join the system at time 0, in fact an advertisement will have to traverse more nodes in order to reach a peer that does not already have that sample. However at time $6.5$, when all the remaining nodes join the system, the average hop count not only it stabilizes quickly, but it converges to the same value in all the experiments. In Fig.~\ref{fig:paper_average_hop_count_flash_crowd} is shown their result and as we can see they are identical, they also stabilize at the same rate. The next test measures the clustering coefficient in a flash crowd scenario, the expected behavior is similar to the average hop count. As shown in Fig.\ref{fig:average_clustering_coefficient}, this is the case. In fact the clustering coefficient stabilizes quickly and to the same rate when all the nodes join the network. Finally, Fig.\ref{fig:average_indegree} shows the average in-degree of the nodes. As we can see after two minutes in all the experiments the nodes have in average the same in-degree, then it drops significantly at time $6.5$, this is in fact expected since a majority of the nodes join the network with in-degree equals to 0. However, it recovers quickly (about $1.30$ minutes later) and it converges to 50 in all the experiments.
+In this set of experiments we want to test the robustness of our implementation under different levels of churn. We measure the average hop count, as well as the clustering coefficient and the in-degree. For the experiments related to the average hop count, we test also the two versions of the \textit{getMetropolisHastingsNeighbour} function: we call it over all the connected peers, or, as in the original paper, over the base overlay.
 
-In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leaves the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. In Fig.\ref{fig:average_hop_count_failures} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
+In the first three experiments we recreate a flash crowd scenario, in which some nodes join at the beginning and the remaining ones join at a later point in time. For instance, recalling that $N = 1000$, for a flash crowd scenario of 70\% of the node, 300 nodes join at time $0s$ and 700 nodes join at minute $6.5$. So after this time, the number of nodes stays constant at 1000. 
 
-\begin{figure}[ht]
+In Fig.\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the average hop count increases with decreasing the number of nodes that join the system at time 0, in fact an advertisement will have to traverse more nodes in order to reach a peer that does not already have that sample. However at time $6.5$, when all the remaining nodes join the system, the average hop count not only it stabilizes quickly, but it converges to the same value in all the experiments. In Fig.\ref{fig:average_hop_count_flash_crowd_2impl} there is the second implemementaion, as expected the average hop count is a little bit higher, however it still converges to the same value at time $7$. In Fig.~\ref{fig:paper_average_hop_count_flash_crowd} instead is shown their result and as we can see they are almost identical, they also stabilize at the same rate. 
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_flash_crowd}\caption{Average hop count}
-  \label{fig:average_hop_count_flash_crowd}
-\end{figure}
-
-\begin{figure}[ht]
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_flash_crowd_1impl}
+  \caption{}
+  \label{fig:average_hop_count_flash_crowd_1impl}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_average_hop_count_flash_crowd}\caption{Test of the average hop count in a flash crowd scenario reported in the paper}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_flash_crowd_2impl}
+  \caption{}
+  \label{fig:average_hop_count_flash_crowd_2impl}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_hop_count_flash_crowd}
+  \caption{}
   \label{fig:paper_average_hop_count_flash_crowd}
+\end{subfigure}
+\caption{Average hop count in a flash crowd scenario. \ref{fig:average_hop_count_flash_crowd_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_flash_crowd_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_flash_crowd} is the test reported in the paper.}
+\label{fig:robustness_hop_count_flash_crowd}
 \end{figure}
 
-\begin{figure}[ht]
+The next test measures the clustering coefficient in a flash crowd scenario, the expected behavior is similar to the average hop count. As shown in Fig.\ref{fig:average_clustering_coefficient_flash_crowd}, this is the case. In fact the clustering coefficient stabilizes quickly and to the same rate when all the nodes join the network. Fig.\ref{fig:paper_average_clustering_coefficient_flash_crowd} shows their result, our clustering coefficient is a little bit higher respect to this, however it could be derive from the fact that in order to establish new connections we use a tracker instead of the random walks
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_clustering_coefficient}\caption{Average clustering coefficient}
-  \label{fig:average_clustering_coefficient}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_clustering_coefficient_flash_crowd}
+  \caption{}
+  \label{fig:average_clustering_coefficient_flash_crowd}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_clustering_coefficient_flash_crowd}
+  \caption{}
+  \label{fig:paper_average_clustering_coefficient_flash_crowd}
+\end{subfigure}
+\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_clustering_coefficient_flash_crowd} represents our result, \ref{fig:paper_average_clustering_coefficient_flash_crowd} is the test reported in the paper.}
+\label{fig:robustness_cc_flash_crowd}
 \end{figure}
 
-\begin{figure}[ht]
+Finally, Fig.\ref{fig:average_indegree} shows the average in-degree of the nodes. As we can see after two minutes in all the experiments the nodes have in average the same in-degree, then it drops significantly at time $6.5$, this is in fact expected since a majority of the nodes join the network with in-degree equals to 0. However, it recovers quickly (about $1.30$ minutes later) and it converges to 50 in all the experiments. Fig.\ref{fig:paper_average_indegree} shows their result, as we can notice we obtained the same result.
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_indegree}\caption{Average in-degree}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_indegree}
+  \caption{}
   \label{fig:average_indegree}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_indegree}
+  \caption{}
+  \label{fig:paper_average_indegree}
+\end{subfigure}
+\caption{Average in-degree in a flash crowd scenario. \ref{fig:average_indegree} represents our result, \ref{fig:paper_average_indegree} is the test reported in the paper.}
+\label{fig:robustness_indegree_flash_crowd}
 \end{figure}
 
-\begin{figure}[ht]
+In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leaves the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. As in the previous set of experiments, we test both the implementation of the \textit{getMetropolisHastingsNeighbour}.
+
+In Fig.\ref{fig:average_hop_count_failures_1impl} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.\ref{fig:average_hop_count_failures_2impl} shows the second implementation, as expected the average hop count, respect to the first implementation, is a little bit higher after the mass failure. Fig.\ref{fig:paper_average_hop_count_failures} instead shows the result reported in the paper, as we can notice they have a quite bigger average hop count respect us, this is probably due to the different implementation of the tracker and random walks.
+
+Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
+
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_failures}\caption{Average hop count}
+%   \label{fig:average_hop_count_failures}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_failures}\caption{Average hop count}
-  \label{fig:average_hop_count_failures}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_failures_1impl}
+  \caption{}
+  \label{fig:average_hop_count_failures_1impl}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_failures_2impl}
+  \caption{}
+  \label{fig:average_hop_count_failures_2impl}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_hop_count_failures}
+  \caption{}
+  \label{fig:paper_average_hop_count_failures}
+\end{subfigure}
+\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes.  \ref{fig:average_hop_count_failures_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_failures_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_failures} is the test reported in the paper.}
+\label{fig:robustness_hop_count_failures}
 \end{figure}
 
-\begin{figure}[ht]
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_clustering_coefficient_failures}\caption{Average clustering coefficient}
+%   \label{fig:average_clustering_coefficient_failures}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_clustering_coefficient_failures}\caption{Average clustering coefficient}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_clustering_coefficient_failures}
+  \caption{}
   \label{fig:average_clustering_coefficient_failures}
-\end{figure}
-
-\begin{figure}[ht]
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_dead_links}\caption{Average number of dead links in view}
-  \label{fig:average_dead_links}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_clustering_coefficient_failures}
+  \caption{}
+  \label{fig:paper_average_clustering_coefficient_failures}
+\end{subfigure}
+\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_clustering_coefficient_failures} represents our result, \ref{fig:paper_average_clustering_coefficient_failures} is the test reported in the paper.}
+\label{fig:robustness_clustering_coefficient_failures}
 \end{figure}
 
-In the last two tests we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.\ref{fig:average_hop_count_churn} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. 
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_dead_links}\caption{Average number of dead links in view}
+%   \label{fig:average_dead_links}
+% \end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_dead_links}
+  \caption{}
+  \label{fig:average_dead_links}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_dead_links}
+  \caption{}
+  \label{fig:paper_average_dead_links}
+\end{subfigure}
+\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_dead_links} represents our result, \ref{fig:paper_average_dead_links} is the test reported in the paper.}
+\label{fig:robustness_dead_links_failures}
+\end{figure}
+
+In the last test we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.\ref{fig:average_hop_count_churn} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. 
 
 
 \begin{figure}[ht]
