@@ -26,7 +26,7 @@ These three main categories are translated in three Javascript APIs:
 
 \textbf{RTCDataChannel} enables peer-to-peer exchange of arbitrary data, with low latency and high throughput. This is what we use to send data between peers, but still they need to be connected in order to send and receive messages, so the DataChannel is built on top of a \textit{PeerConnection}.
 
-\textbf{RTCPeerConnection} is the WebRTC component that handles stable and efficient communication of streaming data between peers. In Fig.\ref{fig:webrtcArchitecture} the WebRTC architecture diagram shows the role of RTCPeerConnection: the main thing to understand from this diagram is that RTCPeerConnection shields web developers from the myriad complexities that lurk beneath. As explained before, we did not use WebRTC for audio and video streaming (the first two columns of the diagram); instead, the next sections focus on how to establish a connection using RTCPeerConnection.
+\textbf{RTCPeerConnection} is the WebRTC component that handles stable and efficient communication of streaming data between peers. In Fig.~\ref{fig:webrtcArchitecture} the WebRTC architecture diagram shows the role of RTCPeerConnection: the main thing to understand from this diagram is that RTCPeerConnection shields web developers from the myriad complexities that lurk beneath. As explained before, we did not use WebRTC for audio and video streaming (the first two columns of the diagram); instead, the next sections focus on how to establish a connection using RTCPeerConnection.
 
 \begin{figure}[ht]
   \centering
@@ -54,7 +54,7 @@ Let us see an example of how to use RTCPeerConnection: imagine Alice wants to co
 	\item Get potential network addresses for the application's host, known as candidates. (see Sect.\ref{sec:webrtc_ice})
 \end{itemize}
 
-For the first point, the exchange of media configuration information proceeds using an offer/answer mechanism that is called JSEP, JavaScript Session Establishment Protocol \cite{jsep}. Fig.\ref{fig:jsep} shows the JSEP architecture: both the caller and callee have to save their local session description taken from the browser and send them through some signaling mechanism, then when they receive the session description of the other they set it as the remote session description. Once the process is finished, they both know the configuration of the peer they want to communicate with.
+For the first point, the exchange of media configuration information proceeds using an offer/answer mechanism that is called JSEP, JavaScript Session Establishment Protocol \cite{jsep}. Fig.~\ref{fig:jsep} shows the JSEP architecture: both the caller and callee have to save their local session description taken from the browser and send them through some signaling mechanism, then when they receive the session description of the other they set it as the remote session description. Once the process is finished, they both know the configuration of the peer they want to communicate with.
 
 The entire sequence of steps is the following:
 \begin{itemize}
@@ -105,11 +105,11 @@ In a perfect world, all the nodes are public and they are always reachable. In r
 
 ICE tries to find the best path to connect peers. It tries all possibilities in parallel and chooses the most efficient option that works. ICE first tries to make a connection using the host address obtained from a device's operating system and network card; if that fails (which it will for devices behind NATs) ICE obtains an external address using a \textit{Session Traversal Utilities for NAT} (STUN) server, and if that fails, traffic is routed via a \textit{Traversal Using Relays around NAT} (TURN) server\cite{webrtc_infrastructure}. 
 
-In other words, if the direct link fails (so if the peers are behind a NAT), ICE uses the STUN server. Fig.\ref{fig:stun} shows how it works: the server has one simple task, find the public IP address and port of the peer and send that address back as a response.  This process enables a WebRTC peer to get a publicly accessible address for itself, and then pass that to the other peer via a signaling mechanism, in order to set up a direct link.
+In other words, if the direct link fails (so if the peers are behind a NAT), ICE uses the STUN server. Fig.~\ref{fig:stun} shows how it works: the server has one simple task, find the public IP address and port of the peer and send that address back as a response.  This process enables a WebRTC peer to get a publicly accessible address for itself, and then pass that to the other peer via a signaling mechanism, in order to set up a direct link.
 
 If that fails, TURN servers can be used as a fallback. These servers have a conceptually simple task, to relay a stream, but unlike STUN servers, they inherently consume a lot of bandwidth. This is in fact the last chance of the ICE Framework.
 
-Fig.\ref{fig:turn} represents the complete schema.
+Fig.~\ref{fig:turn} represents the complete schema.
 
 \begin{figure}[ht]
   \centering

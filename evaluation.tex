@@ -22,19 +22,7 @@ In all simulations 20\% of the nodes is public and 80\% is private, which, accor
 
 \section{Freshness}
 \label{sec:eval_freshness}
-In this experiment we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Fig.~\ref{fig:my_average_hop_count} shows our result, while in Fig.~\ref{fig:paper_average_hop_count} shows their test. As we can see the result is almost identical, this means that our implementation does not alter this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since the higher the timer, the more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. Another important result here is that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every $10$ rounds of the algorithm). 
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count}\caption{Average hop count}
-%   \label{fig:my_average_hop_count}
-% \end{figure}
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_average_hop_count}\caption{Test of average hop count reported in the paper}
-%   \label{fig:paper_average_hop_count}
-% \end{figure}
+In this experiments we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Fig.~\ref{fig:my_average_hop_count} shows our result, while in Fig.~\ref{fig:paper_average_hop_count} shows their test. As we can see the result is almost identical, this means that our implementation does not alter this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since the higher the timer, the more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. We can notice that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every $10$ rounds of the algorithm). 
 
 \begin{figure}
 \centering
@@ -57,12 +45,7 @@ In this experiment we want to measure the freshness of the samples using the ave
 
 \section{Randomness}
 \label{sec:eval_randomness}
-As in \cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built connecting to all the samples stored at nodes. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. Obviously this result shows that the 95\% of the nodes have an in-degree included between 43 and 55, however there are some nodes that still have a quite large in-degree: these peers are the public nodes, which are initially present in a lot of views, so they have a large in-degree. This result is a little bit different from the original paper, in which they show that all the nodes have an in-degree included between 43 and 60. This is probably due to the environment, because they tried this set of tests in their deployed system, with 12000 nodes and for a long time. 
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_indegree}\caption{Converged in-degree distribution}
-%   \label{fig:converged_indegree}
-% \end{figure}
+As in \cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built by the peers connecting to all the samples stored in their views. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. This test measures the in-degree of a node in the wormhole overlay, which is the number of nodes that are connected to it through this overlay. This result shows that all the nodes have an in-degree included between 43 and 64, which is almost the same result illustrated in the paper. We can notice that our result is even narrower than the original, which suggests good load balancing. 
 
 \begin{figure}
 \centering
@@ -82,19 +65,8 @@ As in \cite{wormhole}, we now want to evaluate the global randomness properties 
 \label{fig:randomness_conv_indegree}
 \end{figure}
 
-One interesting fact, that confirms that the problem is not the implementation, is shown in Fig.~\ref{fig:indegree_evolution}: as we can see the in-degree converges to 50 after 4 minutes, and the standard deviation after 8 minutes, which are exactly the same results of the original paper, shown in Fig.~\ref{fig:paper_indegree_evolution}. If we look at this result, we are right to believe that running our implementation for a longer time and with an higher number of nodes could change the result obtained in the converged in-degree graph.
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/indegree_evolution}\caption{In-degree evolution over time with error bars}
-%   \label{fig:indegree_evolution}
-% \end{figure}
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/paper_indegree_evolution}\caption{Test of in-degree evolution reported in the paper}
-%   \label{fig:paper_indegree_evolution}
-% \end{figure}
+\newpage
+One interesting fact, is shown in Fig.~\ref{fig:indegree_evolution}: as we can see the in-degree converges to 50 after 4 minutes, and the standard deviation after 8 minutes, which are exactly the same results of the original paper, shown in Fig.~\ref{fig:paper_indegree_evolution}. This is a good result, it reflects exactly what we obtained in the previous test and it means that almost all the nodes are ``known'' in the network by the same number of peers.
 
 \begin{figure}
 \centering
@@ -114,11 +86,7 @@ One interesting fact, that confirms that the problem is not the implementation, 
 \label{fig:randomness_indegree}
 \end{figure}
 
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/clustering_coefficient_evolution}\caption{Clustering coefficient evolution for different view sizes}
-%   \label{fig:clustering_coefficient_evolution}
-% \end{figure}
+Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient evolution for different view size, as we can notice it grows with increasing the view size. In fact the higher the view, the higher the number of connections. This result is the same on the original paper. We can also notice that it converges roughly at the same rate as the in-degree.
 
 \begin{figure}
 \centering
@@ -138,14 +106,7 @@ One interesting fact, that confirms that the problem is not the implementation, 
 \label{fig:randomness_clustering}
 \end{figure}
 
-Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient evolution for different view size, as we can notice it grows with increasing the view size. In fact the higher the view, the higher the number of connections. This result is the same on the original paper. We can also notice that it converges roughly at the same rate as the in-degree.
-The last test is shown in Fig.\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than the one of the random graph by a constant factor, which is due to the fact that WPSS does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/converged_clustering_coefficient}\caption{Converged clustering coefficient for increasing view sizes}
-%   \label{fig:converged_clustering_coefficient}
-% \end{figure}
+The last test is shown in Fig.~\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than the one of the random graph by a constant factor, which is due to the fact that WPSS does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
 
 \begin{figure}
 \centering
@@ -165,17 +126,10 @@ The last test is shown in Fig.\ref{fig:converged_clustering_coefficient} and it 
 \label{fig:randomness_conv_clustering}
 \end{figure}
 
+\newpage
 \section{Inter-arrival Time of Advertisements}
 \label{sec:interarrivaltime}
-In these tests we want to measure the inter-arrival time of the advertisements, so the lapse of time between two consecutive accepted samples. This is an important factor, because the topology is a constraint: in fact the public nodes have a lot of peers connected to them, so they receive more advertisements than the private nodes that are connected only to few nodes. However, the \textit{acceptAd} method takes care of this: it ensures that all the nodes, in average, consume the advertisements at the same rate, namely one in each $\Delta$ period. In Fig.~\ref{fig:average_interarrivaltime} we can observe that the average inter-arrival time of the samples converges to the wormhole period $\Delta$ after about 2 minutes. Except in this time lapse, all the nodes in average consumes one advertisement every $\Delta$, which is exactly the result we were searching. Furthermore, this result is identical to the one shown in the original paper.
-
-Now we want to verify if the \textit{acceptAd} method correctly balances samples across public and private nodes. To do that, we measured the difference inter-arrival time between them. As shown in Fig.~\ref{fig:interarrivaltime_difference} this difference is very low, about $500 ms$ in the worst case in which $\Delta = 6 s$. With $\Delta$ equals to $1s$ or $3s$ the difference is lower, about $100ms$ and $200ms$, so we can confirm that the \textit{acceptAd} method successfully balances the samples between all the nodes, as well as in the original paper.
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_interarrivaltime}\caption{Average inter-arrival time for samples (terminating advertisements) at all peers}
-%   \label{fig:average_interarrivaltime}
-% \end{figure}
+In these tests we want to measure the inter-arrival time of the advertisements, so the lapse of time between two consecutive accepted samples. This is an important factor, because the topology is a constraint: in fact the public nodes have a lot of peers connected to them, so they receive more advertisements than the private nodes that instead have a lower number of connected peers. However, the \textit{acceptAd} method takes care of this: it ensures that all the nodes, in average, consume the advertisements at the same rate, namely one in each $\Delta$ period. In Fig.~\ref{fig:average_interarrivaltime} we can observe that the average inter-arrival time of the samples converges to the wormhole period $\Delta$ after about 2 minutes. Except in this time lapse, all the nodes in average consumes one advertisement every $\Delta$, which is exactly the result we were searching. Furthermore, this result is identical to the one shown in the original paper.
 
 \begin{figure}
 \centering
@@ -195,11 +149,8 @@ Now we want to verify if the \textit{acceptAd} method correctly balances samples
 \label{fig:ad_average_interarrivaltime}
 \end{figure}
 
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/interarrivaltime_difference}\caption{Difference in inter-arrival time between public and private peers}
-%   \label{fig:interarrivaltime_difference}
-% \end{figure}
+
+Now we want to verify if the \textit{acceptAd} method correctly balances samples across public and private nodes. To do that, we measured the difference inter-arrival time between them. As shown in Fig.~\ref{fig:interarrivaltime_difference} this difference is very low, about $500 ms$ in the worst case in which $\Delta = 6 s$. With $\Delta$ equals to $1s$ or $3s$ the difference is lower, about $100ms$ and $200ms$, so we can confirm that the \textit{acceptAd} method successfully balances the samples between all the nodes, as well as in the original paper.
 
 \begin{figure}
 \centering
@@ -222,11 +173,11 @@ Now we want to verify if the \textit{acceptAd} method correctly balances samples
 
 \section{Robustness to Different Churn Patterns}
 \label{sec:robustness}
-In this set of experiments we want to test the robustness of our implementation under different levels of churn. We measure the average hop count, as well as the clustering coefficient and the in-degree. For the experiments related to the average hop count, we test also the two versions of the \textit{getMetropolisHastingsNeighbour} function: we call it over all the connected peers, or, as in the original paper, over the base overlay.
+In this set of experiments we want to test the robustness of our implementation under different levels of churn. We measure the average hop count, as well as the clustering coefficient and the in-degree. For the experiments related to the average hop count, we test also the two versions of the \textit{getMetropolisHastingsNeighbour} function: when we call it over all the connected peers or, as in the original paper, over the base overlay.
 
-In the first three experiments we recreate a flash crowd scenario, in which some nodes join at the beginning and the remaining ones join at a later point in time. For instance, recalling that $N = 1000$, for a flash crowd scenario of 70\% of the node, 300 nodes join at time $0s$ and 700 nodes join at minute $6.5$. So after this time, the number of nodes stays constant at 1000. 
+In the first three experiments we recreate a flash crowd scenario, in which some nodes join at the beginning and the remaining ones join at a later point in time. For instance, recalling that $N = 1000$, for a flash crowd scenario of 70\% of the node, 300 nodes join at time $0s$ and 700 nodes join at minute $6.5$. Then after this time, the number of nodes stays constant at 1000. 
 
-In Fig.\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the average hop count increases with decreasing the number of nodes that join the system at time 0, in fact an advertisement will have to traverse more nodes in order to reach a peer that does not already have that sample. However at time $6.5$, when all the remaining nodes join the system, the average hop count not only it stabilizes quickly, but it converges to the same value in all the experiments. In Fig.\ref{fig:average_hop_count_flash_crowd_2impl} there is the second implemementaion, as expected the average hop count is a little bit higher, however it still converges to the same value at time $7$. In Fig.~\ref{fig:paper_average_hop_count_flash_crowd} instead is shown their result and as we can see they are almost identical, they also stabilize at the same rate. 
+In Fig.~\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the average hop count increases with decreasing the number of nodes that join the system at time 0, in fact an advertisement will have to traverse more nodes in order to reach a peer that does not already have that sample. However at time $7$, when all the remaining nodes join the system, the average hop count not only stabilizes quickly, but it converges to the same value in all the experiments. In Fig.~\ref{fig:average_hop_count_flash_crowd_2impl} there is the second implementation, as expected the average hop count is a little bit higher, however it still converges to the same value at time $7$. In Fig.~\ref{fig:paper_average_hop_count_flash_crowd} instead is shown their result and as we can see they are almost identical, as expected it stabilizes at the same rate as in our second implementation. 
 
 \begin{figure}
 \centering
@@ -252,7 +203,7 @@ In Fig.\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the average
 \label{fig:robustness_hop_count_flash_crowd}
 \end{figure}
 
-The next test measures the clustering coefficient in a flash crowd scenario, the expected behavior is similar to the average hop count. As shown in Fig.\ref{fig:average_clustering_coefficient_flash_crowd}, this is the case. In fact the clustering coefficient stabilizes quickly and to the same rate when all the nodes join the network. Fig.\ref{fig:paper_average_clustering_coefficient_flash_crowd} shows their result, our clustering coefficient is a little bit higher respect to this, however it could be derive from the fact that in order to establish new connections we use a tracker instead of the random walks
+The next test measures the clustering coefficient in a flash crowd scenario, the expected behavior is similar to the average hop count. As shown in Fig.~\ref{fig:average_clustering_coefficient_flash_crowd}, this is the case. In fact the clustering coefficient stabilizes quickly and to the same rate when all the nodes join the network. Fig.~\ref{fig:paper_average_clustering_coefficient_flash_crowd} shows their result, our clustering coefficient is a little bit higher respect to this, however it could derive from the fact that in order to establish new connections we use a tracker instead of the random walks.
 
 \begin{figure}
 \centering
@@ -272,7 +223,7 @@ The next test measures the clustering coefficient in a flash crowd scenario, the
 \label{fig:robustness_cc_flash_crowd}
 \end{figure}
 
-Finally, Fig.\ref{fig:average_indegree} shows the average in-degree of the nodes. As we can see after two minutes in all the experiments the nodes have in average the same in-degree, then it drops significantly at time $6.5$, this is in fact expected since a majority of the nodes join the network with in-degree equals to 0. However, it recovers quickly (about $1.30$ minutes later) and it converges to 50 in all the experiments. Fig.\ref{fig:paper_average_indegree} shows their result, as we can notice we obtained the same result.
+Finally, Fig.~\ref{fig:average_indegree} shows the average in-degree of the nodes. As we can see after two minutes in all the experiments the nodes have in average the same in-degree, then it drops significantly at time $6.5$, this is in fact expected since a majority of nodes join the network with in-degree equals to $0$. However, it recovers quickly (about $1.30$ minutes later) and it converges to 50 in all the experiments. Fig.~\ref{fig:paper_average_indegree} shows their result, as we can notice we obtained the same result.
 
 \begin{figure}
 \centering
@@ -292,18 +243,10 @@ Finally, Fig.\ref{fig:average_indegree} shows the average in-degree of the nodes
 \label{fig:robustness_indegree_flash_crowd}
 \end{figure}
 
-In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leaves the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. As in the previous set of experiments, we test both the implementation of the \textit{getMetropolisHastingsNeighbour}.
+\newpage
+In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leave the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. As in the previous set of experiments, we test both the implementation of the \textit{getMetropolisHastingsNeighbour}.
 
-In Fig.\ref{fig:average_hop_count_failures_1impl} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.\ref{fig:average_hop_count_failures_2impl} shows the second implementation, as expected the average hop count, respect to the first implementation, is a little bit higher after the mass failure. Fig.\ref{fig:paper_average_hop_count_failures} instead shows the result reported in the paper, as we can notice they have a quite bigger average hop count respect us, this is probably due to the different implementation of the tracker and random walks.
-
-Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
-
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_failures}\caption{Average hop count}
-%   \label{fig:average_hop_count_failures}
-% \end{figure}
+In Fig.~\ref{fig:average_hop_count_failures_1impl} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.~\ref{fig:average_hop_count_failures_2impl} shows the second implementation, as expected the average hop count, respect to the first implementation, is a little bit higher after the mass failure. Fig.~\ref{fig:paper_average_hop_count_failures} instead shows the result reported in the paper, as we can notice they have a quite bigger average hop count respect us, this is probably due to the different implementations of the tracker and random walks.
 
 \begin{figure}
 \centering
@@ -329,12 +272,7 @@ Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of th
 \label{fig:robustness_hop_count_failures}
 \end{figure}
 
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_clustering_coefficient_failures}\caption{Average clustering coefficient}
-%   \label{fig:average_clustering_coefficient_failures}
-% \end{figure}
+Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. 
 
 \begin{figure}
 \centering
@@ -354,12 +292,7 @@ Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of th
 \label{fig:robustness_clustering_coefficient_failures}
 \end{figure}
 
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_dead_links}\caption{Average number of dead links in view}
-%   \label{fig:average_dead_links}
-% \end{figure}
+One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible, and in the same way it has to eliminate all the dead links from the views of the live nodes. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
 
 \begin{figure}
 \centering
@@ -379,11 +312,30 @@ Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of th
 \label{fig:robustness_dead_links_failures}
 \end{figure}
 
-In the last test we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.\ref{fig:average_hop_count_churn} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. 
+\newpage
+In the last test shown in Fig.~\ref{fig:robustness_hop_count_churn} we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.~\ref{fig:average_hop_count_churn_1impl} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. In Fig.~\ref{fig:average_hop_count_churn_2impl} we have the second implementation, and as we can notice the average is higher than the first implementation, although it is lower than the original represented in Fig.~\ref{fig:paper_average_hop_count_churn}.
 
-
-\begin{figure}[ht]
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/average_hop_count_churn}\caption{Average hop count}
-  \label{fig:average_hop_count_churn}
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_churn_1impl}
+  \caption{}
+  \label{fig:average_hop_count_churn_1impl}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/average_hop_count_churn_2impl}
+  \caption{}
+  \label{fig:average_hop_count_churn_2impl}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[keepaspectratio=true, width=1\linewidth]{images/paper_average_hop_count_churn}
+  \caption{}
+  \label{fig:paper_average_hop_count_churn}
+\end{subfigure}
+\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes.  \ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
+\label{fig:robustness_hop_count_churn}
 \end{figure}
+

@@ -1,0 +1,59 @@
+%!TEX root = spadini_davide.tex
+
+\chapter{Gossip-based Aggregation}
+\label{cha:aggregation}
+We now want to implement a gossip-based aggregation protocol on top of our WPSS, in order to actually test our peer sampling service in a real peer-to-peer application. Aggregation is a common name for a set of functions that provide a summary of some global system property. In other words, they allow local access to global information in order to simplify the task of controlling, monitoring and optimization in distributed applications. Examples of aggregation functions include network size, total free storage, maximum load, average uptime, location and intensity of hotspots, etc~\cite{aggregation}. 
+
+The core of the protocol is a simple gossip-based communication scheme in which each node periodically selects some other random node to communicate with. During this communication the nodes update their local approximate values by performing some computation based on their previous approximate values. This local pairwise interaction is designed in such a way that all approximate values in the system will quickly converge to the desired aggregate value. 
+
+\section{Gossip-based Aggregation algorithm}
+We consider the same network of the tests, consisting of a large collection of nodes that are assigned unique identifiers and that communicate through message exchanges. 
+
+We assume that each node in the network holds a numeric value and we want to calculate the average among the nodes. In a practical setting, this value can characterize any aspect of the node or its environment (e.g., the load at the node, available storage space, temperature measured by a sensor network, etc.). The task of the protocol is to continuously provide all nodes with an up-to-date estimate of an aggregate function, computed over the values held by the current set of nodes. The algorithm is taken from \cite{aggregation} and it is shown in \textbf{Algorithm 2}.
+
+\begin{algorithm}[H]
+  \SetKwProg{Upon}{upon receive}{ do}{end}
+  \SetKwProg{Every}{every}{ do}{end}
+  \SetKwProg{Init}{init}{ do}{end}
+
+  \Init{}{
+  	$s_p = random()$
+  }
+
+  \Every{$\delta$}{
+  	$q \leftarrow \textsc{getNeighbor()}$\;
+  	send $s_p$ to \textit{q}\;
+  	$s_q \leftarrow receive(q)$\;
+  	$s_p ← update(s_p,s_q)$\;
+  }
+
+  \Upon{$receive(s_q)$}{
+   	send $s_p$ to q\;
+    $s_p ← \textsc{update}(s_p,s_q)$\;
+  }
+
+ \caption{Push-pull gossip protocol executed by node \textit{p}. The local state of \textit{p} is denoted as $s_p$.}
+\end{algorithm}
+
+The algorithm runs on all the peers and it contains one timer and one event-handler. Every $\delta$ time the node initiates an information exchange with a random neighbor \textit{q} by sending it a message containing the local state $s_p$ and waiting for a response with the remote state $s_q$. The other function instead waits for messages sent by an initiator and replies with the local state. The term push-pull refers to the fact that each information exchange is performed in a symmetric manner: both participants send and receive their states.
+
+We also have other two methods: the \textsc{getNeighbor()} and the \textsc{update()}. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \textsc{update} depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
+
+The \textsc{init} function initialize the local value of the node. We test two different implementation of this method: 
+\begin{enumerate}
+	\item all the nodes start with a random value between $0$ and $1$. The expected output is the average over all these local values.
+	\item one node starts with $1$ and the others with $0$. The expected output is $1/N$, and doing the inverse we obtain the total number of nodes present in the network (\textbf{Counting protocol}).
+\end{enumerate}
+
+As we can notice, every round of algorithm each node push its local value to a random node present in the network, and it waits to respond to other requests. What we expect is that, after few cycles, all the nodes converge to the same value. 
+
+\section{Evaluation}
+\label{sec:evaluation_aggregation}
+We now evaluate the implementation described above over our peer sampling service, so using the \textsc{getNeighbor} function over the view obtained from the WPSS. The environment is the same as in the previous tests:
+\begin{itemize}
+	\item $N = 1000$ nodes
+	\item $\delta = 1s$
+	\item all the nodes join following a Poisson distribution with a mean inter-arrival time of 100 milliseconds
+\end{itemize}
+
+For the WPSS we set $\Delta = 1000$ and the view size equals to $50$.
