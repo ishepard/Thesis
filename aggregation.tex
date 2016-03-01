@@ -56,4 +56,52 @@ We now evaluate the implementation described above over our peer sampling servic
 	\item all the nodes join following a Poisson distribution with a mean inter-arrival time of 100 milliseconds
 \end{itemize}
 
-For the WPSS we set $\Delta = 1000$ and the view size equals to $50$.
+For the WPSS we set $\Delta = 1000$ and the view size equals to $50$. 
+
+In Fig.~\ref{fig:aggregation_average} there is represented the average among all the nodes and also the minimum and maximum values. As we can see in the first rounds the average is varying, and the maximum and minimum value are quite bigger. After some rounds, the average stabilizes to the right value while the minimum and maximum values converge quickly to 0. At round 15 all the nodes have the same value with an accuracy of at least 4 decimal place. 
+
+In Fig.~\ref{fig:aggregation_standard_deviation} we can see that the standard deviation decreases every round following an exponential distribution. This is expected, because the difference between the maximum and minimum decreases exponentially and after as few as 20 cycles the initial difference is reduced by several orders of magnitude. This means that after a small number of cycles all nodes will possess very accurate estimates of the global average.
+
+\begin{figure}[p]
+\centering
+\includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_average}
+\caption{Average evolution with error bars.}
+\label{fig:aggregation_average}
+\includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_standard_deviation}
+\caption{Standard deviation evolution.}
+\label{fig:aggregation_standard_deviation}
+\end{figure}
+
+In Fig.~\ref{fig:aggregation_conv_factor} we calculate the convergence factor, using the formula $\sigma_i^2 / \sigma_{i-1}^2$, and we compare it with the theoretically predicted convergence factors shown in \cite{aggregation}, which is $1 / 2\sqrt{e}$. As we can notice it confirms the predicted result, following the dotted gray line, so at each round of algorithm the standard deviation decreases by 30\%.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
+  \label{fig:aggregation_conv_factor}
+\end{figure}
+
+
+\newpage
+We now evaluate the aggregation protocol with a different initial case in which only one node will start with a value equals to $1$ and all the others start with $0$. What we expect is to obtain, after few cycles, an average equals to $1/N$ on all the nodes. Remind that we have $N = 1000$.
+
+In Fig.~\ref{fig:counting_average} there is represented the average among all the nodes and also the minimum and maximum values. As we can notice, in the first rounds the average is not well defined and it is fluctuating, since a lot of nodes will exchange messages with values equals to 0, and few of them will reach the node that has a correct average. However, after few rounds the average converges to the correct value and also the minimum and maximum converge to $0$. With $N = 1000$, the predicted average is $1 / 1000 = 0.001$ and the experimented value that we obtained is $0.00100140314042$.
+
+In Fig.~\ref{fig:counting_standard_deviation} there is represented the standard deviation evolution and as we can see it behaves similarly, at the beginning the standard deviation is high and then it follows an exponential distribution. In Fig.~\ref{fig:counting_conv_factor} we calculate the convergence factor, using the same formula as before. As we can notice until the $14^{th}$ round it has a lot of noise, and then it converges to the theoretical value as in the previous case.
+
+
+\begin{figure}[p]
+\centering
+\includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_average}
+\caption{Average evolution with error bars.}
+\label{fig:counting_average}
+\includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_standard_deviation}
+\caption{Standard deviation evolution.}
+\label{fig:counting_standard_deviation}
+\end{figure}
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
+  \label{fig:counting_conv_factor}
+\end{figure}

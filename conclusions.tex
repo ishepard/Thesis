@@ -1,0 +1,7 @@
+%!TEX root = spadini_davide.tex
+
+\chapter{Conclusions and Further Works}
+\label{cha:conclusions}
+In this project we presented an implementation of the WPSS, an important service that provides the same level of sample freshness as other NAT-aware PSSes, but achieves that with a connection establishment rate that is one order of magnitude lower. We implemented it using WebRTC as ``network handler'', meaning that it is responsible for the creation and the maintenance of the connections between peers.
+
+We showed, through a lot of experiments in which we compared our results with theirs, that our implementation maintains the same properties as in the original. In order to support our implementation we built on top of it a gossip-based aggregation protocol, a peer-to-peer application that uses our underlying service to compute some operations. As the test have demonstrated, the application acts like expected, confirming the correctness of our implementation of the WPSS.
