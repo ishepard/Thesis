@@ -122,7 +122,7 @@ The last test is shown in Fig.~\ref{fig:converged_clustering_coefficient} and it
   \caption{}
   \label{fig:paper_converged_clustering_coefficient}
 \end{subfigure}
-\caption{Clustering coefficient evolution over time with different view size. \ref{fig:converged_clustering_coefficient} represents our result, \ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
+\caption{Converged clustering coefficient for increasing view sizes. \ref{fig:converged_clustering_coefficient} represents our result, \ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
 \label{fig:randomness_conv_clustering}
 \end{figure}
 
@@ -246,7 +246,7 @@ Finally, Fig.~\ref{fig:average_indegree} shows the average in-degree of the node
 \newpage
 In the next set of experiments we measure the robustness of our implementation in case of catastrophic failures, that is, when a large number of peers leave the system at a single instant in time. All the nodes join the system at time $0$, we wait for the overlay to stabilize and then we fail a fixed percentage of nodes at time $5$ minutes. We expect that the algorithm recovers quickly and also that all the nodes remain connected, even in the worst case scenario where 80\% of the peers leave the system. As in the previous set of experiments, we test both the implementation of the \textit{getMetropolisHastingsNeighbour}.
 
-In Fig.~\ref{fig:average_hop_count_failures_1impl} we can notice that all the experiments has the same average hop count until time $5$ minutes, then it increases with increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.~\ref{fig:average_hop_count_failures_2impl} shows the second implementation, as expected the average hop count, respect to the first implementation, is a little bit higher after the mass failure. Fig.~\ref{fig:paper_average_hop_count_failures} instead shows the result reported in the paper, as we can notice they have a quite bigger average hop count respect us, this is probably due to the different implementations of the tracker and random walks.
+In Fig.~\ref{fig:average_hop_count_failures_1impl} we can notice that all the experiments has the same average hop count until minute $5$, then it increases with the increasing of failures. This is expected given the large number of broken links to detect and repair for both the base and wormhole overlays. Notice that the network remains connected even when 80\% of the nodes fail. Fig.~\ref{fig:average_hop_count_failures_2impl} shows the second implementation, as expected the average hop count, compared to the first implementation, is a little bit higher after the mass failure. Fig.~\ref{fig:paper_average_hop_count_failures} instead shows the result reported in the paper, as we can notice they have a quite bigger average hop count than us, which is probably due to the different implementations of the tracker and random walks.
 
 \begin{figure}
 \centering
@@ -272,7 +272,7 @@ In Fig.~\ref{fig:average_hop_count_failures_1impl} we can notice that all the ex
 \label{fig:robustness_hop_count_failures}
 \end{figure}
 
-Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with increasing of failures, since there are less nodes in the network and they are much more connected between each other. 
+Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of the clustering coefficient: it increases with the increasing of failures, since there are less nodes in the network and they are much more connected between each other. 
 
 \begin{figure}
 \centering
@@ -292,7 +292,7 @@ Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of th
 \label{fig:robustness_clustering_coefficient_failures}
 \end{figure}
 
-One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible, and in the same way it has to eliminate all the dead links from the views of the live nodes. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), however after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equals to zero. This result is even better of the one shown in the original paper, because the time employed by them to replace the links is two minutes, we do it in half time. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use the random walks, so they need more time to find a node and establish a new network connection.
+One important experiment in case of massive failures is to measure the average number of dead links in the views of the peers. What we want to obtain is a system which detect and replace the broken links as fast as possible, and in the same way it has to eliminate all the dead links from the views of the live nodes. Fig.~\ref{fig:average_dead_links} shows the result: at time $5$ the number of dead links increases (obviously the higher the failures, the higher the number of dead links), but anyway after just one minute all the broken links are successfully deleted from the views (even in the worst case where 80\% of the nodes fail), and the average number returns equal to zero. This result is even better than the one shown in the original paper, because the time employed by them to replace the links is two minutes, while our system takes half the time to do it. This is probably due the fact that we use a tracker, which has high availability and it responds to all the nodes immediately, while they use random walks, so they need more time to find a node and establish a new network connection.
 
 \begin{figure}
 \centering
@@ -308,12 +308,12 @@ One important experiment in case of massive failures is to measure the average n
   \caption{}
   \label{fig:paper_average_dead_links}
 \end{subfigure}
-\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_dead_links} represents our result, \ref{fig:paper_average_dead_links} is the test reported in the paper.}
+\caption{Average number of dead links in a flash crowd scenario. \ref{fig:average_dead_links} represents our result, \ref{fig:paper_average_dead_links} is the test reported in the paper.}
 \label{fig:robustness_dead_links_failures}
 \end{figure}
 
 \newpage
-In the last test shown in Fig.~\ref{fig:robustness_hop_count_churn} we want to measure the robustness under different level of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.~\ref{fig:average_hop_count_churn_1impl} we notice that our implementation is robust to all the various level of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermine the average hop count. In Fig.~\ref{fig:average_hop_count_churn_2impl} we have the second implementation, and as we can notice the average is higher than the first implementation, although it is lower than the original represented in Fig.~\ref{fig:paper_average_hop_count_churn}.
+In the last test shown in Fig.~\ref{fig:robustness_hop_count_churn} we want to measure the robustness under different levels of churn, as they did in the original paper. We maintain the same timeout of $10$ seconds and the same percentage of nodes that continuously join and leave. In Fig.~\ref{fig:average_hop_count_churn_1impl} we notice that our implementation is robust to all the various levels of churn, even in a better way than the original. This is due to WebRTC: in fact we do not have a failure detector that captures the failure of a node (with the relative problematics), but is all handled inside the EasyRTC Framework. This give us the possibility to immediately capture the ``failure'' event and replace the broken link with a new one, without undermining the average hop count. In Fig.~\ref{fig:average_hop_count_churn_2impl} we have the second implementation, and as we can notice the average is higher than the first implementation, although it is lower than the original represented in Fig.~\ref{fig:paper_average_hop_count_churn}.
 
 \begin{figure}
 \centering
@@ -335,7 +335,7 @@ In the last test shown in Fig.~\ref{fig:robustness_hop_count_churn} we want to m
   \caption{}
   \label{fig:paper_average_hop_count_churn}
 \end{subfigure}
-\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes.  \ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
+\caption{Average hop count under varying levels of churn.  \ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
 \label{fig:robustness_hop_count_churn}
 \end{figure}
 
