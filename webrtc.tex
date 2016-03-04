@@ -56,7 +56,7 @@ For the first point, the exchange of media configuration information proceeds us
 The entire sequence of steps is the following:
 \begin{itemize}
 	\item Alice creates an \RTCPeerConnection object.
-	\item Alice creates an offer using the \RTCPeerConnection \textit{createOffer()} method.
+	\item Alice creates an offer using the \RTCPeerConnection \createOffer method.
 	\item Alice sets her local description to her offer.
 	\item Alice uses a signaling mechanism to send her offer to Bob.
 	\item Bob sets his remote description to Alice's offer, so that his \RTCPeerConnection knows about Alice's setup.
@@ -100,11 +100,11 @@ For metadata signaling, WebRTC applications use an intermediary server, the sign
 
 In a perfect world, all the nodes are public and they are always reachable. In reality, this is not the case: in fact most devices are behind one or more layers of Network Address Translation (NAT)~\cite{nat}, some have anti-virus software that blocks certain ports and protocols, and many are behind proxies and corporate firewalls. All these configurations make the connection peer-to-peer impossible. However, WebRTC applications can use the \textit{Interactive Connectivity Establishment} (ICE) framework to overcome the complexities of real-world networking. 
 
-ICE tries to find the best path to connect peers. It tries all possibilities in parallel and chooses the most efficient option that works. ICE first tries to make a connection using the host address obtained from a device's operating system and network card; if that fails (which it will for devices behind NATs) ICE obtains an external address using a \textit{Session Traversal Utilities for NAT} (STUN) server, and if that fails, traffic is routed via a \textit{Traversal Using Relays around NAT} (TURN) server\cite{webrtc_infrastructure}. 
+ICE tries to find the best path to connect peers. It tries all possibilities in parallel and chooses the most efficient option that works. ICE first tries to make a connection using the host address obtained from a device's operating system and network card; if that fails (which it will for devices behind NATs) ICE obtains an external address using a \textit{Session Traversal Utilities for NAT} (STUN) server, and if that fails, traffic is routed via a \textit{Traversal Using Relays around NAT} (\TURN) server\cite{webrtc_infrastructure}. 
 
 In other words, if the direct link fails (so if the peers are behind a NAT), ICE uses the STUN server. Fig.~\ref{fig:stun} shows how it works: the server has one simple task, find the public IP address and port of the peer and send that address back as a response.  This process enables a WebRTC peer to get a publicly accessible address for itself, and then pass that to the other peer via a signaling mechanism, in order to set up a direct link.
 
-If that fails, TURN servers can be used as a fallback. These servers have a conceptually simple task, to relay a stream, but unlike STUN servers, they inherently consume a lot of bandwidth. This is in fact the last chance of the ICE Framework.
+If that fails, \TURN servers can be used as a fallback. These servers have a conceptually simple task, to relay a stream, but unlike STUN servers, they inherently consume a lot of bandwidth. This is in fact the last chance of the ICE Framework.
 
 Fig.~\ref{fig:turn} represents the complete schema.
 
@@ -116,11 +116,11 @@ Fig.~\ref{fig:turn} represents the complete schema.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/turn}\caption{The full schema: STUN, TURN and signaling}
+  \includegraphics[keepaspectratio=true, width=\textwidth]{images/turn}\caption{The full schema: STUN, \TURN and signaling}
   \label{fig:turn}
 \end{figure}
 
-The URLs of the STUN and/or TURN servers are (optionally) specified by the WebRTC application in the configuration object that is the first argument of the \RTCPeerConnection constructor. Once \RTCPeerConnection has these information, it uses the ICE framework to work out the best path between peers, working with STUN and TURN servers as necessary. When it find the best solution, it initialize the connection and the peers can start to communicate.
+The URLs of the STUN and/or \TURN servers are (optionally) specified by the WebRTC application in the configuration object that is the first argument of the \RTCPeerConnection constructor. Once \RTCPeerConnection has these information, it uses the ICE framework to work out the best path between peers, working with STUN and \TURN servers as necessary. When it find the best solution, it initialize the connection and the peers can start to communicate.
 
 \section{Back to reality: EasyRTC Framework}
 \label{sec:easy_tc}
