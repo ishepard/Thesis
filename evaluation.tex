@@ -38,14 +38,14 @@ In this experiment we want to measure the freshness of the samples using the ave
   \caption{}
   \label{fig:paper_average_hop_count}
 \end{subfigure}
-\caption{Measure of the average hop count, as well as the $90^{th}$ and $99^{th}$ percentile. \ref{fig:my_average_hop_count} represents our result, \ref{fig:paper_average_hop_count} is the test reported in the paper.}
+\caption{Measure of the average hop count, as well as the $90^{th}$ and $99^{th}$ percentile.~\ref{fig:my_average_hop_count} represents our result,~\ref{fig:paper_average_hop_count} is the test reported in the paper.}
 \label{fig:freshness}
 \end{figure}
 
 
 \section{Randomness}
 \label{sec:eval_randomness}
-As in \cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built by the peers connecting to all the samples stored in their views. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. This test measures the in-degree of a node in the wormhole overlay, which is the number of nodes that are connected to it through this overlay. This result shows that all the nodes have an in-degree included between 43 and 64, which is almost the same result illustrated in the paper. We can notice that our result is even narrower than the original, which suggests good load balancing. 
+As in~\cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built by the peers connecting to all the samples stored in their views. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. This test measures the in-degree of a node in the wormhole overlay, which is the number of nodes that are connected to it through this overlay. This result shows that all the nodes have an in-degree included between 43 and 64, which is almost the same result illustrated in the paper. We can notice that our result is even narrower than the original, which suggests good load balancing. 
 
 \begin{figure}
 \centering
@@ -61,7 +61,7 @@ As in \cite{wormhole}, we now want to evaluate the global randomness properties 
   \caption{}
   \label{fig:paper_converged_indegree}
 \end{subfigure}
-\caption{Converged in-degree distribution. \ref{fig:converged_indegree} represents our result, \ref{fig:paper_converged_indegree} is the test reported in the paper.}
+\caption{Converged in-degree distribution.~\ref{fig:converged_indegree} represents our result,~\ref{fig:paper_converged_indegree} is the test reported in the paper.}
 \label{fig:randomness_conv_indegree}
 \end{figure}
 
@@ -82,7 +82,7 @@ One interesting fact, is shown in Fig.~\ref{fig:indegree_evolution}: as we can s
   \caption{}
   \label{fig:paper_indegree_evolution}
 \end{subfigure}
-\caption{Measure of the in-degree evolution over time with error bars. \ref{fig:indegree_evolution} represents our result, \ref{fig:paper_indegree_evolution} is the test reported in the paper.}
+\caption{Measure of the in-degree evolution over time with error bars.~\ref{fig:indegree_evolution} represents our result,~\ref{fig:paper_indegree_evolution} is the test reported in the paper.}
 \label{fig:randomness_indegree}
 \end{figure}
 
@@ -102,7 +102,7 @@ Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient
   \caption{}
   \label{fig:paper_clustering_coefficient_evolution}
 \end{subfigure}
-\caption{Clustering coefficient evolution over time with different view size. \ref{fig:clustering_coefficient_evolution} represents our result, \ref{fig:paper_clustering_coefficient_evolution} is the test reported in the paper.}
+\caption{Clustering coefficient evolution over time with different view size.~\ref{fig:clustering_coefficient_evolution} represents our result,~\ref{fig:paper_clustering_coefficient_evolution} is the test reported in the paper.}
 \label{fig:randomness_clustering}
 \end{figure}
 
@@ -122,7 +122,7 @@ The last test is shown in Fig.~\ref{fig:converged_clustering_coefficient} and it
   \caption{}
   \label{fig:paper_converged_clustering_coefficient}
 \end{subfigure}
-\caption{Converged clustering coefficient for increasing view sizes. \ref{fig:converged_clustering_coefficient} represents our result, \ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
+\caption{Converged clustering coefficient for increasing view sizes.~\ref{fig:converged_clustering_coefficient} represents our result,~\ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
 \label{fig:randomness_conv_clustering}
 \end{figure}
 
@@ -145,7 +145,7 @@ In these tests we want to measure the inter-arrival time of the advertisements, 
   \caption{}
   \label{fig:paper_average_interarrivaltime}
 \end{subfigure}
-\caption{Average inter-arrival time for samples (terminating advertisements) at all peers. \ref{fig:average_interarrivaltime} represents our result, \ref{fig:paper_average_interarrivaltime} is the test reported in the paper.}
+\caption{Average inter-arrival time for samples (terminating advertisements) at all peers.~\ref{fig:average_interarrivaltime} represents our result,~\ref{fig:paper_average_interarrivaltime} is the test reported in the paper.}
 \label{fig:ad_average_interarrivaltime}
 \end{figure}
 
@@ -166,7 +166,7 @@ Now we want to verify if the \textit{acceptAd} method correctly balances samples
   \caption{}
   \label{fig:paper_interarrivaltime_difference}
 \end{subfigure}
-\caption{Difference in inter-arrival time between public and private peers. \ref{fig:interarrivaltime_difference} represents our result, \ref{fig:paper_interarrivaltime_difference} is the test reported in the paper.}
+\caption{Difference in inter-arrival time between public and private peers.~\ref{fig:interarrivaltime_difference} represents our result,~\ref{fig:paper_interarrivaltime_difference} is the test reported in the paper.}
 \label{fig:ad_interarrivaltime_difference}
 \end{figure}
 
@@ -199,7 +199,7 @@ In Fig.~\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the averag
   \caption{}
   \label{fig:paper_average_hop_count_flash_crowd}
 \end{subfigure}
-\caption{Average hop count in a flash crowd scenario. \ref{fig:average_hop_count_flash_crowd_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_flash_crowd_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_flash_crowd} is the test reported in the paper.}
+\caption{Average hop count in a flash crowd scenario.~\ref{fig:average_hop_count_flash_crowd_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers),~\ref{fig:average_hop_count_flash_crowd_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and~\ref{fig:paper_average_hop_count_flash_crowd} is the test reported in the paper.}
 \label{fig:robustness_hop_count_flash_crowd}
 \end{figure}
 
@@ -219,7 +219,7 @@ The next test measures the clustering coefficient in a flash crowd scenario, the
   \caption{}
   \label{fig:paper_average_clustering_coefficient_flash_crowd}
 \end{subfigure}
-\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_clustering_coefficient_flash_crowd} represents our result, \ref{fig:paper_average_clustering_coefficient_flash_crowd} is the test reported in the paper.}
+\caption{Clustering coefficient evolution in a flash crowd scenario.~\ref{fig:average_clustering_coefficient_flash_crowd} represents our result,~\ref{fig:paper_average_clustering_coefficient_flash_crowd} is the test reported in the paper.}
 \label{fig:robustness_cc_flash_crowd}
 \end{figure}
 
@@ -239,7 +239,7 @@ Finally, Fig.~\ref{fig:average_indegree} shows the average in-degree of the node
   \caption{}
   \label{fig:paper_average_indegree}
 \end{subfigure}
-\caption{Average in-degree in a flash crowd scenario. \ref{fig:average_indegree} represents our result, \ref{fig:paper_average_indegree} is the test reported in the paper.}
+\caption{Average in-degree in a flash crowd scenario.~\ref{fig:average_indegree} represents our result,~\ref{fig:paper_average_indegree} is the test reported in the paper.}
 \label{fig:robustness_indegree_flash_crowd}
 \end{figure}
 
@@ -268,7 +268,7 @@ In Fig.~\ref{fig:average_hop_count_failures_1impl} we can notice that all the ex
   \caption{}
   \label{fig:paper_average_hop_count_failures}
 \end{subfigure}
-\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes.  \ref{fig:average_hop_count_failures_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_failures_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_failures} is the test reported in the paper.}
+\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes. ~\ref{fig:average_hop_count_failures_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers),~\ref{fig:average_hop_count_failures_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and~\ref{fig:paper_average_hop_count_failures} is the test reported in the paper.}
 \label{fig:robustness_hop_count_failures}
 \end{figure}
 
@@ -288,7 +288,7 @@ Fig.~\ref{fig:average_clustering_coefficient_failures} shows the evolution of th
   \caption{}
   \label{fig:paper_average_clustering_coefficient_failures}
 \end{subfigure}
-\caption{Clustering coefficient evolution in a flash crowd scenario. \ref{fig:average_clustering_coefficient_failures} represents our result, \ref{fig:paper_average_clustering_coefficient_failures} is the test reported in the paper.}
+\caption{Clustering coefficient evolution in a flash crowd scenario.~\ref{fig:average_clustering_coefficient_failures} represents our result,~\ref{fig:paper_average_clustering_coefficient_failures} is the test reported in the paper.}
 \label{fig:robustness_clustering_coefficient_failures}
 \end{figure}
 
@@ -308,7 +308,7 @@ One important experiment in case of massive failures is to measure the average n
   \caption{}
   \label{fig:paper_average_dead_links}
 \end{subfigure}
-\caption{Average number of dead links in a flash crowd scenario. \ref{fig:average_dead_links} represents our result, \ref{fig:paper_average_dead_links} is the test reported in the paper.}
+\caption{Average number of dead links in a flash crowd scenario.~\ref{fig:average_dead_links} represents our result,~\ref{fig:paper_average_dead_links} is the test reported in the paper.}
 \label{fig:robustness_dead_links_failures}
 \end{figure}
 
@@ -335,7 +335,7 @@ In the last test shown in Fig.~\ref{fig:robustness_hop_count_churn} we want to m
   \caption{}
   \label{fig:paper_average_hop_count_churn}
 \end{subfigure}
-\caption{Average hop count under varying levels of churn.  \ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers), \ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and \ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
+\caption{Average hop count under varying levels of churn. ~\ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\textit{getMetropolisHastingsNeighbour} over all the connected peers),~\ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\textit{getMetropolisHastingsNeighbour} over the base overlay) and~\ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
 \label{fig:robustness_hop_count_churn}
 \end{figure}
 
