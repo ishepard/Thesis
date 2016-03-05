@@ -68,7 +68,7 @@ The entire sequence of steps is the following:
 	\item Alice sets Bob's answer as the remote session description.
 \end{itemize}
 Offers and answers are communicated in Session Description Protocol format (SDP)~\cite{sdp}, which look like this:
-\begin{verbatim}
+\begin{Verbatim}[frame=single]
 v=0
 o=- 7614219274584779017 2 IN IP4 127.0.0.1
 s=-
@@ -86,7 +86,7 @@ a=rtcp-mux
 a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:9c1AHz27dZ9xPI91YNfSlI67/EMkjHHIHORiClQe
 a=rtpmap:111 opus/48000/2
 ....
-\end{verbatim}
+\end{Verbatim}
 Using this format, the offer and answer messages contain all the necessary information to guarantee that the peers can communicate using the same codecs, resolution and other media capabilities. 
 Once this process is finished, and they both know the configuration of the other, they use the ICE Framework in order to establish the connection.
 

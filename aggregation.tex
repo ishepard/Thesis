@@ -9,7 +9,7 @@ The core of the protocol is a simple gossip-based communication scheme in which 
 \section{Gossip-based Aggregation algorithm}
 We consider the same network of the tests, consisting of a large collection of nodes that are assigned unique identifiers and that communicate through message exchanges. 
 
-We assume that each node in the network holds a numeric value and we want to calculate the average among the nodes. In a practical setting, this value can characterize any aspect of the node or its environment (e.g., the load at the node, available storage space, temperature measured by a sensor network, etc.). The task of the protocol is to continuously provide all nodes with an up-to-date estimate of an aggregate function, computed over the values held by the current set of nodes. The algorithm is taken from \cite{aggregation} and it is shown in \textbf{Algorithm 2}.
+We assume that each node in the network holds a numeric value and we want to calculate the average among the nodes. In a practical setting, this value can characterize any aspect of the node or its environment (e.g., the load at the node, available storage space, temperature measured by a sensor network, etc.). The task of the protocol is to continuously provide all nodes with an up-to-date estimate of an aggregate function, computed over the values held by the current set of nodes. The algorithm is taken from~\cite{aggregation} and it is shown in \textbf{Algorithm 2}.
 
 \begin{algorithm}[H]
   \SetKwProg{Upon}{upon receive}{ do}{end}
@@ -21,15 +21,15 @@ We assume that each node in the network holds a numeric value and we want to cal
   }
 
   \Every{$\delta$}{
-  	$q \leftarrow \textsc{getNeighbour()}$\;
+  	$q \leftarrow \getNeighbour$\;
   	send $s_p$ to \textit{q}\;
-  	$s_q \leftarrow receive(q)$\;
-  	$s_p ← update(s_p,s_q)$\;
+  	$s_q \leftarrow \textsf{\textit{receive}}(q)$\;
+  	$s_p ← \update(s_p,s_q)$\;
   }
 
   \Upon{$receive(s_q)$}{
    	send $s_p$ to q\;
-    $s_p ← \textsc{update}(s_p,s_q)$\;
+    $s_p ← \update(s_p,s_q)$\;
   }
 
  \caption{Push-pull gossip protocol executed by node \textit{p}. The local state of \textit{p} is denoted as $s_p$.}
@@ -37,9 +37,9 @@ We assume that each node in the network holds a numeric value and we want to cal
 
 The algorithm runs on all the peers and it contains one timer and one event-handler. Every $\delta$ time the node initiates an information exchange with a random neighbour \textit{q} by sending it a message containing the local state $s_p$ and waiting for a response with the remote state $s_q$. The other function instead waits for messages sent by an initiator and replies with the local state. The term push-pull refers to the fact that each information exchange is performed in a symmetric manner: both participants send and receive their states.
 
-We also have two other methods: the \textsc{getNeighbour()} and the \textsc{update()}. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \textsc{update} depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
+We also have two other methods: the \getNeighbour and the \update. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \update depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
 
-The \textsc{init} function initializes the local value of the node. We test two different implementations of this method: 
+The \init function initializes the local value of the node. We test two different implementations of this method: 
 \begin{enumerate}
 	\item all the nodes start with a random value between $0$ and $1$. The expected output is the average over all these local values.
 	\item one node starts with $1$ and the others with $0$. The expected output is $1/N$, and if we do the inverse we obtain the total number of nodes present in the network (\textbf{Counting protocol}).
@@ -49,7 +49,7 @@ As we can notice, in every round of the algorithm each node pushes its local val
 
 \section{Evaluation}
 \label{sec:evaluation_aggregation}
-We now evaluate the implementation described above, that is built on our peer sampling service, in other words using the \textsc{getNeighbour} function over the view obtained from the WPSS. The environment is the same as in the previous tests:
+We now evaluate the implementation described above, that is built on our peer sampling service, in other words using the \getNeighbour function over the view obtained from the WPSS. The environment is the same as in the previous tests:
 \begin{itemize}
 	\item $N = 1000$ nodes
 	\item $\delta = 1s$
@@ -64,19 +64,19 @@ In Fig.~\ref{fig:aggregation_standard_deviation} we can see that the standard de
 
 \begin{figure}[p]
 \centering
-\includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_average}
+\includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/aggregation_average}
 \caption{Average evolution with error bars.}
 \label{fig:aggregation_average}
-\includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_standard_deviation}
+\includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/aggregation_standard_deviation}
 \caption{Standard deviation evolution.}
 \label{fig:aggregation_standard_deviation}
 \end{figure}
 
-In Fig.~\ref{fig:aggregation_conv_factor} we calculate the convergence factor, using the formula $\sigma_i^2 / \sigma_{i-1}^2$, and we compare it with the theoretically predicted convergence factors shown in \cite{aggregation}, which is $1 / 2\sqrt{e}$. As we can notice it confirms the predicted result, following the dotted gray line, so at each round of algorithm the standard deviation decreases by 30\%.
+In Fig.~\ref{fig:aggregation_conv_factor} we calculate the convergence factor, using the formula $\sigma_i^2 / \sigma_{i-1}^2$, and we compare it with the theoretically predicted convergence factors shown in~\cite{aggregation}, which is $1 / 2\sqrt{e}$. As we can notice it confirms the predicted result, following the dotted gray line, so at each round of algorithm the standard deviation decreases by 30\%.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/aggregation_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
+  \includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/aggregation_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
   \label{fig:aggregation_conv_factor}
 \end{figure}
 
@@ -90,10 +90,10 @@ In Fig.~\ref{fig:counting_standard_deviation} we represent the standard deviatio
 
 \begin{figure}[p]
 \centering
-\includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_average}
+\includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/counting_average}
 \caption{Average evolution with error bars.}
 \label{fig:counting_average}
-\includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_standard_deviation}
+\includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/counting_standard_deviation}
 \caption{Standard deviation evolution.}
 \label{fig:counting_standard_deviation}
 \end{figure}
@@ -101,6 +101,6 @@ In Fig.~\ref{fig:counting_standard_deviation} we represent the standard deviatio
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[keepaspectratio=true, width=\textwidth]{images/counting_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
+  \includegraphics[keepaspectratio=true, width=0.8\textwidth]{images/counting_conv_factor}\caption{Convergence factor $\sigma_i^2 / \sigma_{i-1}^2$ evolution.}
   \label{fig:counting_conv_factor}
 \end{figure}
