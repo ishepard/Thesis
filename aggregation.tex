@@ -2,7 +2,7 @@
 
 \chapter{Gossip-based Aggregation}
 \label{cha:aggregation}
-We now want to implement a gossip-based aggregation protocol on top of our WPSS, in order to actually test our peer sampling service in a real peer-to-peer application. Aggregation is a common name for a set of functions that provide a summary of some global system property. In other words, they allow local access to global information in order to simplify the task of controlling, monitoring and optimization in distributed applications. Examples of aggregation functions include network size, total free storage, maximum load, average uptime, location and intensity of hotspots, etc~\cite{aggregation}. 
+We now want to implement a gossip-based aggregation protocol on top of our \ac{WPSS}, in order to actually test our peer sampling service in a real peer-to-peer application. Aggregation is a common name for a set of functions that provide a summary of some global system property. In other words, they allow local access to global information in order to simplify the task of controlling, monitoring and optimization in distributed applications. Examples of aggregation functions include network size, total free storage, maximum load, average uptime, location and intensity of hotspots, etc~\cite{aggregation}. 
 
 The core of the protocol is a simple gossip-based communication scheme in which each node periodically selects some other random node to communicate with. During this communication the nodes update their local approximate values by performing some computation based on their previous approximate values. This local pairwise interaction is designed in such a way that all approximate values in the system will quickly converge to the desired aggregate value. 
 
@@ -37,26 +37,26 @@ We assume that each node in the network holds a numeric value and we want to cal
 
 The algorithm runs on all the peers and it contains one timer and one event-handler. Every $\delta$ time the node initiates an information exchange with a random neighbour \textit{q} by sending it a message containing the local state $s_p$ and waiting for a response with the remote state $s_q$. The other function instead waits for messages sent by an initiator and replies with the local state. The term push-pull refers to the fact that each information exchange is performed in a symmetric manner: both participants send and receive their states.
 
-We also have two other methods: the \getNeighbour and the \update. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \update depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
+We also have two other methods: the \getNeighbour and the \update. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The \update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \update depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
 
 The \init function initializes the local value of the node. We test two different implementations of this method: 
 \begin{enumerate}
-	\item all the nodes start with a random value between $0$ and $1$. The expected output is the average over all these local values.
-	\item one node starts with $1$ and the others with $0$. The expected output is $1/N$, and if we do the inverse we obtain the total number of nodes present in the network (\textbf{Counting protocol}).
+	\item all the nodes start with a random value between 0 and 1. The expected output is the average over all these local values.
+	\item one node starts with 1 and the others with 0. The expected output is $1/N$, and if we do the inverse we obtain the total number of nodes present in the network (\textbf{Counting protocol}).
 \end{enumerate}
 
 As we can notice, in every round of the algorithm each node pushes its local value to a random node present in the network, and it waits to respond to other requests. What we expect is that, after few cycles, all the nodes converge to the same value. 
 
 \section{Evaluation}
 \label{sec:evaluation_aggregation}
-We now evaluate the implementation described above, that is built on our peer sampling service, in other words using the \getNeighbour function over the view obtained from the WPSS. The environment is the same as in the previous tests:
+We now evaluate the implementation described above, that is built on our peer sampling service, in other words using the \getNeighbour function over the view obtained from the \ac{WPSS}. The environment is the same as in the previous tests:
 \begin{itemize}
 	\item $N = 1000$ nodes
 	\item $\delta = 1s$
 	\item all the nodes join following a Poisson distribution with a mean inter-arrival time of 100 milliseconds
 \end{itemize}
 
-For the WPSS we set $\Delta = 1000$ and the view size equals to $50$. 
+For the \ac{WPSS} we set $\Delta = 1000$ and the view size equals to 50. 
 
 In Fig.~\ref{fig:aggregation_average} is represented the average among all the nodes and also the minimum and maximum values. As we can see in the first rounds the average is varying, and the maximum and minimum values are quite higher. After some rounds, the average stabilizes to the right value while the minimum and maximum values converge quickly to 0. At round 15 all the nodes have the same value with an accuracy of at least 4 decimal place. 
 
@@ -82,9 +82,9 @@ In Fig.~\ref{fig:aggregation_conv_factor} we calculate the convergence factor, u
 
 
 \newpage
-We now evaluate the aggregation protocol with a different initial case in which only one node will start with a value equals to $1$ and all the others start with $0$. What we expect is to obtain, after few cycles, an average equals to $1/N$ on all the nodes. Remind that we have $N = 1000$.
+We now evaluate the aggregation protocol with a different initial case in which only one node will start with a value equals to 1 and all the others start with 0. What we expect is to obtain, after few cycles, an average equals to $1/N$ on all the nodes. Remind that we have $N = 1000$.
 
-In Fig.~\ref{fig:counting_average} we represent the average among all the nodes and also the minimum and maximum values. As we can notice, in the first rounds the average is not well defined and it is fluctuating, since a lot of nodes will exchange messages with values equals to 0, and few of them will reach the node that has a correct average. However, after few rounds the average converges to the correct value and also the minimum and maximum converge to $0$. With $N = 1000$, the predicted average is $1 / 1000 = 0.001$ and the experimented value that we obtained is $0.00100140314042$.
+In Fig.~\ref{fig:counting_average} we represent the average among all the nodes and also the minimum and maximum values. As we can notice, in the first rounds the average is not well defined and it is fluctuating, since a lot of nodes will exchange messages with values equals to 0, and few of them will reach the node that has a correct average. However, after few rounds the average converges to the correct value and also the minimum and maximum converge to 0. With $N = 1000$, the predicted average is $1 / 1000 = 0.001$ and the experimented value that we obtained is 0.00100140314042.
 
 In Fig.~\ref{fig:counting_standard_deviation} we represent the standard deviation evolution and as we can see it behaves similarly, at the beginning the standard deviation is high and then it follows an exponential distribution. In Fig.~\ref{fig:counting_conv_factor} we calculate the convergence factor, using the same formula as before. As we can notice until the $14^{th}$ round it has a lot of noise, and then it converges to the theoretical value as in the previous case.
 

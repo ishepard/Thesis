@@ -2,15 +2,15 @@
 
 \chapter{Evaluation}
 \label{cha:evaluation}
-We now want to evaluate our implementation of the WPSS algorithm, and compare what we obtain with the original papers~\cite{wormhole} in order to confirm or contest their results. We tested our implementation both in deployment and in simulation, however due to the low number of nodes in the real environment we report only the results obtained in simulation. We want to show that our implementation provides the desirable PSS properties, such as fresh samples, randomness, and low cost in a real environment, but also we want to test robustness under different level of churn.
+We now want to evaluate our implementation of the \ac{WPSS} algorithm, and compare what we obtain with the original papers~\cite{wormhole} in order to confirm or contest their results. We tested our implementation both in deployment and in simulation, however due to the low number of nodes in the real environment we report only the results obtained in simulation. We want to show that our implementation provides the desirable PSS properties, such as fresh samples, randomness, and low cost in a real environment, but also we want to test robustness under different level of churn.
 
 The structure is shown in Fig.~\ref{fig:overlay}, the base overlay is a random undirected graph that is also NAT-friendly, where private nodes are connected to public nodes, and public nodes are connected to one another. The bootstrap service component provides addresses of random public nodes that are used to build the base overlay and to create wormholes. It is implemented as a central server, the tracker. The base overlay service strives to keep the overlay connected repairing broken links, thus maintaining a fixed number of outgoing links at each node. Every node maintains 20 links to random public nodes, but since these links are bidirectional, the effective average degree is 40. 
 
-We set $TTL = 100$. As discussed in~\cite{wormhole} and also as we will see later, WPSS messages will always terminate much sooner in most practical settings, so the TTL is not a critical parameter.
+We set $TTL = 100$. As discussed in~\cite{wormhole} and also as we will see later, \ac{WPSS} messages will always terminate much sooner in most practical settings, so the TTL is not a critical parameter.
 
 \section{Experimental Setup}
 \label{sec:exp_setup}
-For what concerns simulations, we implemented WPSS using the \textbf{Hivejs-Framework-Sim} provided by the Hive Streaming company. It is very configurable, and it allows us to define the network size, the bandwidth of the nodes but also to test the implementation under different level of churn or latency. All experiments are averaged over 4 runs. We applied the same settings as in the original paper, which are: 
+For what concerns simulations, we implemented \ac{WPSS} using the \textbf{Hivejs-Framework-Sim} provided by the Hive Streaming company. It is very configurable, and it allows us to define the network size, the bandwidth of the nodes but also to test the implementation under different level of churn or latency. All experiments are averaged over 4 runs. We applied the same settings as in the original paper, which are: 
 
 \begin{itemize}
 	\item the view size (the number of freshest random samples a node remembers) is set to 50
@@ -45,7 +45,7 @@ In this experiment we want to measure the freshness of the samples using the ave
 
 \section{Randomness}
 \label{sec:eval_randomness}
-As in~\cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the WPSS overlay topology, so the upper overlay. This overlay is built by the peers connecting to all the samples stored in their views. In this set of experiments, we measure the in-degree distribution of the WPSS overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. This test measures the in-degree of a node in the wormhole overlay, which is the number of nodes that are connected to it through this overlay. This result shows that all the nodes have an in-degree included between 43 and 64, which is almost the same result illustrated in the paper. We can notice that our result is even narrower than the original, which suggests good load balancing. 
+As in~\cite{wormhole}, we now want to evaluate the global randomness properties of our system by measuring properties of the \ac{WPSS} overlay topology, so the upper overlay. This overlay is built by the peers connecting to all the samples stored in their views. In this set of experiments, we measure the in-degree distribution of the \ac{WPSS} overlay network, its convergence time for different view sizes, and finally its clustering coefficient for different view sizes. In Fig.~\ref{fig:converged_indegree} we can see the converged in-degree distribution. This test measures the in-degree of a node in the wormhole overlay, which is the number of nodes that are connected to it through this overlay. This result shows that all the nodes have an in-degree included between 43 and 64, which is almost the same result illustrated in the paper. We can notice that our result is even narrower than the original, which suggests good load balancing. 
 
 \begin{figure}
 \centering
@@ -106,7 +106,7 @@ Fig.~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficient
 \label{fig:randomness_clustering}
 \end{figure}
 
-The last test is shown in Fig.~\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than the one of the random graph by a constant factor, which is due to the fact that WPSS does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
+The last test is shown in Fig.~\ref{fig:converged_clustering_coefficient} and it indicates that the clustering coefficient is higher than the one of the random graph by a constant factor, which is due to the fact that \ac{WPSS} does not guarantee independent samples at nodes that are close in the stable base overlay~\cite{wormhole}.
 
 \begin{figure}
 \centering
