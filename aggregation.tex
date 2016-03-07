@@ -2,7 +2,7 @@
 
 \chapter{Gossip-based Aggregation}
 \label{cha:aggregation}
-We now want to implement a gossip-based aggregation protocol on top of our \ac{WPSS}, in order to actually test our peer sampling service in a real peer-to-peer application. Aggregation is a common name for a set of functions that provide a summary of some global system property. In other words, they allow local access to global information in order to simplify the task of controlling, monitoring and optimization in distributed applications. Examples of aggregation functions include network size, total free storage, maximum load, average uptime, location and intensity of hotspots, etc~\cite{aggregation}. 
+To complete our analysis, we implemented a gossip-based aggregation protocol on top of our \ac{WPSS}, in order to actually test our peer sampling service in a real peer-to-peer application. Aggregation is a common name for a set of functions that provide a summary of some global system property. In other words, they allow local access to global information in order to simplify the task of controlling, monitoring and optimization in distributed applications. Examples of aggregation functions include network size, total free storage, maximum load, average uptime, location and intensity of hotspots, etc.~\cite{aggregation}. 
 
 The core of the protocol is a simple gossip-based communication scheme in which each node periodically selects some other random node to communicate with. During this communication the nodes update their local approximate values by performing some computation based on their previous approximate values. This local pairwise interaction is designed in such a way that all approximate values in the system will quickly converge to the desired aggregate value. 
 
@@ -86,7 +86,7 @@ We now evaluate the aggregation protocol with a different initial case in which 
 
 In Fig.~\ref{fig:counting_average} we represent the average among all the nodes and also the minimum and maximum values. As we can notice, in the first rounds the average is not well defined and it is fluctuating, since a lot of nodes will exchange messages with values equals to 0, and few of them will reach the node that has a correct average. However, after few rounds the average converges to the correct value and also the minimum and maximum converge to 0. With $N = 1000$, the predicted average is $1 / 1000 = 0.001$ and the experimented value that we obtained is 0.00100140314042.
 
-In Fig.~\ref{fig:counting_standard_deviation} we represent the standard deviation evolution and as we can see it behaves similarly, at the beginning the standard deviation is high and then it follows an exponential distribution. In Fig.~\ref{fig:counting_conv_factor} we calculate the convergence factor, using the same formula as before. As we can notice until the $14^{th}$ round it has a lot of noise, and then it converges to the theoretical value as in the previous case.
+In Fig.~\ref{fig:counting_standard_deviation} we represent the standard deviation evolution and as we can see it behaves similarly, at the beginning the standard deviation is high and then it follows an exponential distribution. In Fig.~\ref{fig:counting_conv_factor} we calculate the convergence factor, using the same formula as before. As we can notice until the $14^{th}$ round a lot of noise is present, and then it converges to the theoretical value as in the previous case.
 
 \begin{figure}[p]
 \centering

@@ -2,7 +2,8 @@
 
 \chapter{Implementation}
 \label{cha:implementation}
-Using WebRTC as ``network handler'' gave us the possibility to avoid the manual management of some events (e.g. the failure of a node, the retransmission of a message, etc. etc.), because they are directly handled by it. In the previous sections we saw how the Google WebRTC APIs work and the algorithm details, however in order to combine them to work properly we have to take care of mechanisms that are not mentioned in the original paper of the algorithm nor covered in their implementation. The most important one is how the nodes can exchange their EasyRTC identifiers, but we also discuss some improvements that we achieved using WebRTC.
+
+Using WebRTC as a ``network handler'' gave us the possibility to avoid the manual management of some events (e.g. the failure of a node, the retransmission of a message, etc. etc.), because they are directly handled by it. In the previous sections we saw how the Google WebRTC APIs work and the algorithm details, however in order to combine them to work properly we have to take care of mechanisms that are not mentioned in the original paper of the algorithm nor covered in their implementation. The most important one is how the nodes can exchange their EasyRTC identifiers, but we also discuss some improvements that we achieved using WebRTC.
 
 \section{Tracker}
 \label{cha:tracker}
@@ -55,7 +56,7 @@ The Hivejs-Framework has a WebRTC module for handling peer-to-peer connections w
 The project in order to work correctly needs Node.js version 0.12.5, npm version 2.11.2 and Typescript version 1.7.3.
 
 \section{Special Tools}
-We used a lot of tools to simplify the testing phase but also the implementation. One of the most important is NetworkX\footnote{\url{https://networkx.github.io}}, a Python language software package for the creation, manipulation, and study of the structure of complex networks. We used this tool to periodically draw the graphs of the network, in order to have a better representation of the overlays and to check the correctness of the implementation. 
+We used a lot of tools to simplify the testing phase but also the implementation. One of the most important is NetworkX\footnote{\url{https://networkx.github.io}}, a Python package for the creation, manipulation, and study of the structure of complex networks. We used this tool to periodically draw the graphs of the network, in order to have a better representation of the overlays and to check the correctness of the implementation. 
 
 
 \section{Possible improvements}
