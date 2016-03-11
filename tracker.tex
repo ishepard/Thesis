@@ -10,7 +10,7 @@ When the nodes bootstrap, they have to contact the EasyRTC Server in order to jo
 	\item the peer analyzes the answer and connects to that ID
 \end{itemize}
 
-We use the tracker to provide all nodes with a list of ``initial peers'' to contact in order to start the algorithm (more information in Sect.\ref{cha:wormhole}), to replace the broken links and for all the necessary replacements expected from the algorithm. The main tasks of the tracker are shown in Fig. \ref{fig:tracker}.
+We use the tracker to provide all nodes with a list of ``initial peers'' to contact in order to start the algorithm (more information in Section~\ref{cha:wormhole}), to replace the broken links and for all the necessary replacements expected from the algorithm. The main tasks of the tracker are shown in Figure~\ref{fig:tracker}.
 
 In this project the tracker acts like a central server: we only have one tracker for all the nodes, and it has to handle and serve all the requests that derive from the nodes. However, this is not a problem since it has relatively low load (the link replacements are rare) and the algorithm is designed to reduce the number of new network connections created. 
 
