@@ -24,12 +24,12 @@ We assume that each node in the network holds a numeric value and we want to cal
   	$q \leftarrow \getNeighbour$\;
   	send $s_p$ to \textit{q}\;
   	$s_q \leftarrow \textsf{\textit{receive}}(q)$\;
-  	$s_p ← \update(s_p,s_q)$\;
+  	$s_p \leftarrow \update(s_p,s_q)$\;
   }
 
   \Upon{$receive(s_q)$}{
    	send $s_p$ to q\;
-    $s_p ← \update(s_p,s_q)$\;
+    $s_p \leftarrow \update(s_p,s_q)$\;
   }
 
  \caption{Push-pull gossip protocol executed by node \textit{p}. The local state of \textit{p} is denoted as $s_p$.}
