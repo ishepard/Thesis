@@ -2,24 +2,24 @@
 
 \chapter{Implementation}
 \label{cha:implementation}
-Using WebRTC as a ``network handler'' gave us the possibility to avoid the manual management of some events (e.g. the failure of a node, the retransmission of a message, etc. etc.), because they are directly handled by it. In the previous sections we saw how the Google WebRTC APIs work and the algorithm details, however in order to combine them to work properly we have to take care of mechanisms that are not mentioned in the original paper of the algorithm nor covered in their implementation. The most important one is how the nodes can exchange their EasyRTC identifiers, but we also discuss some improvements that we achieved using WebRTC.
+Using WebRTC as a ``network handler'' gave us the possibility to avoid the manual management of some events (e.g. the failure of a node, the retransmission of a message, etc. etc.), because they are directly handled by it. In the previous sections we saw how the Google WebRTC APIs work and also the algorithm details, however in order to combine them to work properly we have to take care of mechanisms that are not mentioned in the original paper of the algorithm nor covered in their implementation. The most important one is how the nodes can exchange their EasyRTC identifiers, but we also discuss some improvements that we achieved using WebRTC.
 
 \section{Tracker}
 \label{cha:tracker}
 In Section~\ref{cha:webrtc} we saw how a node can initialize a connection to another node using the EasyRTC Framework: at the beginning they both have to contact the EasyRTC Server to obtain the ID, and then pass the identifier of the other node to the \textsf{\textit{connect}} function in order to establish the connection. However, EasyRTC does not specify how the nodes have to exchange these identifiers: for this purpose we created a tracker. 
 
-When the nodes bootstrap, they have to contact the EasyRTC Server in order to join the network and then they have to register themselves to the tracker. In this way the latter will eventually have the complete list of the nodes present in the network. When a peer needs to connect to another one (i.e. to replace a broken link):
+When the nodes bootstrap, they have to contact the EasyRTC Server in order to join the network and then they have to register themselves to the tracker. In this way the latter will eventually have the complete list of the nodes present in the network. When a peer needs to connect to another one (i.e.\ to replace a broken link):
 \begin{itemize}
-	\item it asks the tracker a reference of a new node
-	\item the tracker chooses an ID at random from the list and it returns it to the peer
-	\item the peer analyzes the answer and connects to that ID
+	\item it asks the tracker a reference of a new node.
+	\item the tracker chooses an ID at random from the list and it returns it to the peer.
+	\item the peer analyzes the answer and connects to that ID.
 \end{itemize}
 
 We use the tracker to provide all nodes with a list of ``initial peers'' to contact in order to start the algorithm (more information in Section~\ref{cha:wormhole}), to replace the broken links and for all the necessary replacements expected from the algorithm. The main tasks of the tracker are shown in Figure~\ref{fig:tracker}.
 
-In this project the tracker acts like a central server: we only have one tracker for all the nodes, and it has to handle and serve all the requests that derive from the nodes. However, this is not a problem since it has relatively low load (the link replacements are rare) and the algorithm is designed to reduce the number of new network connections created. 
+In this project the tracker acts like a central server: we only have one tracker for all the nodes, and it has to handle and serve all the requests that arrive from the nodes. However, this is not a problem since it has relatively low load (link replacements are rare) and the algorithm is designed to reduce the number of new network connections created. 
 
-The tracker is hosted on Heroku\footnote{Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps \url{https://www.heroku.com/}} and is implemented in Node.js. The nodes contact the tracker using \textsf{XMLHttpRequest} (XHR)\footnote{XMLHttpRequest is an API available to web browser scripting languages such as JavaScript that is used to send HTTP or HTTPS requests to a web server and load the server response data back into the script} and then they parse the response to obtain what they asked.
+The tracker is hosted on \textbf{Heroku}\footnote{Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps \url{https://www.heroku.com/}} and is implemented in \textbf{Node.js}. The nodes contact the tracker using \textsf{XMLHttpRequest} (XHR)\footnote{XMLHttpRequest is an API available to web browser scripting languages such as JavaScript that is used to send HTTP or HTTPS requests to a web server and load the server response data back into the script} and then they parse the response to obtain what they asked.
 
 \begin{figure}[ht]
   \centering
@@ -29,9 +29,9 @@ The tracker is hosted on Heroku\footnote{Heroku is a cloud platform that lets co
 
 \section{Project Environment}
 \label{cha:design}
-We implemented and tested the project in a real environment and also in emulation. WebRTC APIs are web browser APIs, meaning that they can only work in a browser session. So we developed a first version of the \ac{WPSS} that works in the browser, and tested it with few nodes (100) using Google Chrome\footnote{Google Chrome is a free-ware web browser developed by Google} as browser. Then, in order to test it in a bigger environment we used an emulator. Both versions are implemented using the framework \textbf{Hivejs-Framework} provided by the creator of the algorithm, the Hive Streaming\footnote{Hive Streaming provides network solutions for media distribution and performance analysis. Started as a spin-off in 2007 from the Swedish Institute for Computer Science and the Royal Institute of Technology in Stockholm, the company maintains a strong focus on research and development. \url{https://www.hivestreaming.com}} company. This framework is written in \textbf{Typescript}\footnote{TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. \url{http://www.typescriptlang.org}}, and it enables us to choose if we want to run the project on browser or directly in Node.js simulating a lot of instances. 
+We implemented and tested the project in a real environment and also in emulation. WebRTC APIs are web browser APIs, meaning that they can only work in a browser session. So we developed a first version of the \ac{WPSS} that works in the browser, and tested it with few nodes (100) using Google Chrome\footnote{Google Chrome is a free-ware web browser developed by Google} as browser. Then, in order to test it in a bigger environment we used an emulator. Both versions are implemented using the framework \textbf{Hivejs-Framework} provided by the creator of the algorithm, the Hive Streaming\footnote{Hive Streaming provides network solutions for media distribution and performance analysis. Started as a spin-off in 2007 from the Swedish Institute for Computer Science and the Royal Institute of Technology in Stockholm, the company maintains a strong focus on research and development. \url{https://www.hivestreaming.com}} company. This framework is written in \textbf{Typescript}\footnote{TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. \url{http://www.typescriptlang.org}}, and it enables us to choose if we want to run the project on browser or directly in \textbf{Node.js} simulating a lot of instances. 
 
-At bootstrap-time, all the nodes contact the EasyRTC Server (Section~\ref{subsec:easyrtc_server}) to join the network. Then, they need a way to build the base overlay with a fixed number of nodes, so they have to register themselves to the tracker, which it will return the list of the nodes that they have to contact. The tracker is also used to replace the broken links with new ones. In all the other cases, the peers communicate between each other without the help of an external server. The schema with all the steps is shown in Figure~\ref{fig:project_architecture}.
+At bootstrap-time, all the nodes contact the EasyRTC Server (Section~\ref{subsec:easyrtc_server}) to join the network. Then, they need a way to build the base overlay with a fixed number of nodes, so they have to register themselves to the tracker, which it will return the list of the nodes that they have to contact. The tracker is also used to replace the broken links with new ones. In all the other cases, the peers communicate between each other without the help of an external server. The workflow with all the steps is shown in Figure~\ref{fig:project_architecture}.
 
 \begin{figure}[ht]
   \centering
@@ -45,10 +45,10 @@ At bootstrap-time, all the nodes contact the EasyRTC Server (Section~\ref{subsec
 The Hivejs-Framework has a WebRTC module for handling peer-to-peer connections which, as explained in Section~\ref{sec:easy_tc}, is EasyRTC. Then we used a lot of other modules, the most important ones are:
 
 \begin{itemize}
-	\item \textbf{Browserify}: with browserify we can use some core Node.js modules and many of the thousands modules on npm in our browser-side code
-	\item \textbf{Grunt}: it is a task runner, we use it to compile, optimize and ``browserify'' our code. More information at \url{http://gruntjs.com}
-	\item \textbf{Inversify}: Inversify is a lightweight (4KB) pico inversion of control (IoC) container for TypeScript and JavaScript applications
-	\item \textbf{Q}: a library for promises, more information at \url{https://www.npmjs.com/package/q}
+	\item \textbf{Browserify}: with browserify we can use some core Node.js modules and many of the thousands modules on npm in our browser-side code.
+	\item \textbf{Grunt}: it is a task runner, we use it to compile, optimize and ``browserify'' our code. More information at \url{http://gruntjs.com}.
+	\item \textbf{Inversify}: Inversify is a lightweight (4KB) pico inversion of control (IoC) container for TypeScript and JavaScript applications.
+	\item \textbf{Q}: a library for promises, more information at \url{https://www.npmjs.com/package/q}.
 	\item \textbf{Fs}: we use this module only in emulation to write and save the logs of the nodes on local files.
 \end{itemize}
 

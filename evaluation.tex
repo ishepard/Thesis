@@ -2,11 +2,11 @@
 
 \chapter{Evaluation}
 \label{cha:evaluation}
-We now want to evaluate our implementation of the \ac{WPSS} algorithm, and compare what we obtain with the original papers~\cite{wormhole} in order to confirm or contest their results. We tested our implementation both in deployment and in emulation, however due to the low number of nodes in the real environment we report only the results obtained in emulation. We want to show that our implementation provides the desirable PSS properties, such as fresh samples, randomness, and low cost in a real environment, but also we want to test robustness under different level of churn.
+We now want to evaluate our implementation of the \ac{WPSS} algorithm, and compare what we obtain with the original paper~\cite{wormhole} in order to confirm or contest their results. We tested our implementation both in deployment and in emulation, however due to the low number of nodes in the real environment we report only the results obtained in emulation. We want to show that our implementation provides the desirable PSS properties, such as fresh samples, randomness, and low cost in a real environment, but also we want to test robustness under different level of churn.
 
 The structure is shown in Figure~\ref{fig:overlay}, the base overlay is a random undirected graph that is also NAT-friendly, where private nodes are connected to public nodes, and public nodes are connected to one another. The bootstrap service component provides addresses of random public nodes that are used to build the base overlay and to create wormholes. It is implemented as a central server, the tracker. The base overlay service strives to keep the overlay connected repairing broken links, thus maintaining a fixed number of outgoing links at each node. Every node maintains 20 links to random public nodes, but since these links are bidirectional, the effective average degree is 40. 
 
-We set $TTL = 100$. As discussed in~\cite{wormhole} and also as we will see later, \ac{WPSS} messages will always terminate much sooner in most practical settings, so the TTL is not a critical parameter.
+We set $TTL=100$. As discussed in~\cite{wormhole} and also as we will see later, \ac{WPSS} messages will always terminate much sooner in most practical settings, so the TTL is not a critical parameter.
 
 \section{Experimental Setup}
 \label{sec:exp_setup}
@@ -22,7 +22,7 @@ In all the emulations 20\% of the nodes is public and 80\% is private, which, ac
 
 \section{Freshness}
 \label{sec:eval_freshness}
-In this experiment we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Figure~\ref{fig:my_average_hop_count} shows our result, while in Figure~\ref{fig:paper_average_hop_count} shows their test. As we can see the result is almost identical, this means that our implementation does not alter this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since the higher the timer, the more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. We can notice that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every 10 rounds of the algorithm). 
+In this experiment we want to measure the freshness of the samples using the average hop count but also the \textit{$90^{th}$} and \textit{$99^{th}$} percentiles. This is the same test reported in~\cite{wormhole}. Figure~\ref{fig:my_average_hop_count} shows our result, while in Figure~\ref{fig:paper_average_hop_count} shows their test. As we can see the results are almost identical: this means that our implementation does not alter this property. In the figure we can notice that the average hop count and the $90^{th}$ percentile grow slowly with increasing of $\Delta_{wh}$, which is the wormhole renewal timer, while the $99^{th}$ percentile grows more quickly. This was expected, since the higher the timer, the more nodes the advertisement will need to traverse in order to find a node which does not already have its sample. An important fact to notice is that the \textit{TTL} is never reached, actually in the worst case it is not greater then 20. We can notice that the performance is optimal for $\Delta_{wh}$  between about 5 and 10 seconds, as in their result. Given this finding, we set $\Delta_{wh} = 10$ for the remaining experiments, as this value has good freshness (even considering the $99^{th}$ percentile), while the number of new links required is relatively low (a new connection every 10 rounds of the algorithm). 
 
 \begin{figure}
 \centering
@@ -38,7 +38,7 @@ In this experiment we want to measure the freshness of the samples using the ave
   \caption{}
   \label{fig:paper_average_hop_count}
 \end{subfigure}
-\caption{Measure of the average hop count, as well as the $90^{th}$ and $99^{th}$ percentile.~\ref{fig:my_average_hop_count} represents our result,~\ref{fig:paper_average_hop_count} is the test reported in the paper.}
+\caption{Measure of the average hop count, as well as the $90^{th}$ and $99^{th}$ percentile.~\ref{fig:my_average_hop_count} represents our result,~\ref{fig:paper_average_hop_count} is the test reported in the original paper.}
 \label{fig:freshness}
 \end{figure}
 
@@ -61,7 +61,7 @@ As in~\cite{wormhole}, we now want to evaluate the global randomness properties 
   \caption{}
   \label{fig:paper_converged_indegree}
 \end{subfigure}
-\caption{Converged in-degree distribution.~\ref{fig:converged_indegree} represents our result,~\ref{fig:paper_converged_indegree} is the test reported in the paper.}
+\caption{Converged in-degree distribution.~\ref{fig:converged_indegree} represents our result,~\ref{fig:paper_converged_indegree} is the test reported in the original paper.}
 \label{fig:randomness_conv_indegree}
 \end{figure}
 
@@ -82,7 +82,7 @@ One interesting fact, is shown in Figure~\ref{fig:indegree_evolution}: as we can
   \caption{}
   \label{fig:paper_indegree_evolution}
 \end{subfigure}
-\caption{Measure of the in-degree evolution over time with error bars.~\ref{fig:indegree_evolution} represents our result,~\ref{fig:paper_indegree_evolution} is the test reported in the paper.}
+\caption{Measure of the in-degree evolution over time with error bars.~\ref{fig:indegree_evolution} represents our result,~\ref{fig:paper_indegree_evolution} is the test reported in the original paper.}
 \label{fig:randomness_indegree}
 \end{figure}
 
@@ -102,7 +102,7 @@ Figure~\ref{fig:clustering_coefficient_evolution} shows the clustering coefficie
   \caption{}
   \label{fig:paper_clustering_coefficient_evolution}
 \end{subfigure}
-\caption{Clustering coefficient evolution over time with different view size.~\ref{fig:clustering_coefficient_evolution} represents our result,~\ref{fig:paper_clustering_coefficient_evolution} is the test reported in the paper.}
+\caption{Clustering coefficient evolution over time for different view sizes.~\ref{fig:clustering_coefficient_evolution} represents our result,~\ref{fig:paper_clustering_coefficient_evolution} is the test reported in the original paper.}
 \label{fig:randomness_clustering}
 \end{figure}
 
@@ -122,7 +122,7 @@ The last test is shown in Figure~\ref{fig:converged_clustering_coefficient} and 
   \caption{}
   \label{fig:paper_converged_clustering_coefficient}
 \end{subfigure}
-\caption{Converged clustering coefficient for increasing view sizes.~\ref{fig:converged_clustering_coefficient} represents our result,~\ref{fig:paper_converged_clustering_coefficient} is the test reported in the paper.}
+\caption{Converged clustering coefficient for increasing view sizes.~\ref{fig:converged_clustering_coefficient} represents our result,~\ref{fig:paper_converged_clustering_coefficient} is the test reported in the original paper.}
 \label{fig:randomness_conv_clustering}
 \end{figure}
 
@@ -145,7 +145,7 @@ In these tests we want to measure the inter-arrival time of the advertisements, 
   \caption{}
   \label{fig:paper_average_interarrivaltime}
 \end{subfigure}
-\caption{Average inter-arrival time for samples (terminating advertisements) at all peers.~\ref{fig:average_interarrivaltime} represents our result,~\ref{fig:paper_average_interarrivaltime} is the test reported in the paper.}
+\caption{Average inter-arrival time for samples (terminating advertisements) at all peers.~\ref{fig:average_interarrivaltime} represents our result,~\ref{fig:paper_average_interarrivaltime} is the test reported in the original paper.}
 \label{fig:ad_average_interarrivaltime}
 \end{figure}
 
@@ -166,7 +166,7 @@ Now we want to verify if the \acceptAd method correctly balances samples across 
   \caption{}
   \label{fig:paper_interarrivaltime_difference}
 \end{subfigure}
-\caption{Difference in inter-arrival time between public and private peers.~\ref{fig:interarrivaltime_difference} represents our result,~\ref{fig:paper_interarrivaltime_difference} is the test reported in the paper.}
+\caption{Difference in inter-arrival time between public and private peers.~\ref{fig:interarrivaltime_difference} represents our result,~\ref{fig:paper_interarrivaltime_difference} is the test reported in the original paper.}
 \label{fig:ad_interarrivaltime_difference}
 \end{figure}
 
@@ -199,7 +199,7 @@ In Figure~\ref{fig:average_hop_count_flash_crowd_1impl} we can see that the aver
   \caption{}
   \label{fig:paper_average_hop_count_flash_crowd}
 \end{subfigure}
-\caption{Average hop count in a flash crowd scenario.~\ref{fig:average_hop_count_flash_crowd_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_flash_crowd_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_flash_crowd} is the test reported in the paper.}
+\caption{Average hop count in a flash crowd scenario.~\ref{fig:average_hop_count_flash_crowd_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_flash_crowd_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_flash_crowd} is the test reported in the original paper.}
 \label{fig:robustness_hop_count_flash_crowd}
 \end{figure}
 
@@ -219,7 +219,7 @@ The next test measures the clustering coefficient in a flash crowd scenario, the
   \caption{}
   \label{fig:paper_average_clustering_coefficient_flash_crowd}
 \end{subfigure}
-\caption{Clustering coefficient evolution in a flash crowd scenario.~\ref{fig:average_clustering_coefficient_flash_crowd} represents our result,~\ref{fig:paper_average_clustering_coefficient_flash_crowd} is the test reported in the paper.}
+\caption{Clustering coefficient evolution in a flash crowd scenario.~\ref{fig:average_clustering_coefficient_flash_crowd} represents our result,~\ref{fig:paper_average_clustering_coefficient_flash_crowd} is the test reported in the original paper.}
 \label{fig:robustness_cc_flash_crowd}
 \end{figure}
 
@@ -239,7 +239,7 @@ Finally, Figure~\ref{fig:average_indegree} shows the average in-degree of the no
   \caption{}
   \label{fig:paper_average_indegree}
 \end{subfigure}
-\caption{Average in-degree in a flash crowd scenario.~\ref{fig:average_indegree} represents our result,~\ref{fig:paper_average_indegree} is the test reported in the paper.}
+\caption{Average in-degree in a flash crowd scenario.~\ref{fig:average_indegree} represents our result,~\ref{fig:paper_average_indegree} is the test reported in the original paper.}
 \label{fig:robustness_indegree_flash_crowd}
 \end{figure}
 
@@ -268,7 +268,7 @@ In Figure~\ref{fig:average_hop_count_failures_1impl} we can notice that all the 
   \caption{}
   \label{fig:paper_average_hop_count_failures}
 \end{subfigure}
-\caption{Average hop count in catastrophic failure scenarios with different ratios of failed nodes. ~\ref{fig:average_hop_count_failures_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_failures_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_failures} is the test reported in the paper.}
+\caption{Average hop count in catastrophic failure scenarios for different ratios of failed nodes. ~\ref{fig:average_hop_count_failures_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_failures_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_failures} is the test reported in the original paper.}
 \label{fig:robustness_hop_count_failures}
 \end{figure}
 
@@ -288,7 +288,7 @@ Figure~\ref{fig:average_clustering_coefficient_failures} shows the evolution of 
   \caption{}
   \label{fig:paper_average_clustering_coefficient_failures}
 \end{subfigure}
-\caption{Clustering coefficient evolution in catastrophic failure scenarios with different ratios of failed nodes.~\ref{fig:average_clustering_coefficient_failures} represents our result,~\ref{fig:paper_average_clustering_coefficient_failures} is the test reported in the paper.}
+\caption{Clustering coefficient evolution in catastrophic failure scenarios for different ratios of failed nodes.~\ref{fig:average_clustering_coefficient_failures} represents our result,~\ref{fig:paper_average_clustering_coefficient_failures} is the test reported in the original paper.}
 \label{fig:robustness_clustering_coefficient_failures}
 \end{figure}
 
@@ -308,7 +308,7 @@ One important experiment in case of massive failures is to measure the average n
   \caption{}
   \label{fig:paper_average_dead_links}
 \end{subfigure}
-\caption{Average number of dead links in catastrophic failure scenarios with different ratios of failed nodes.~\ref{fig:average_dead_links} represents our result,~\ref{fig:paper_average_dead_links} is the test reported in the paper.}
+\caption{Average number of dead links in catastrophic failure scenarios for different ratios of failed nodes.~\ref{fig:average_dead_links} represents our result,~\ref{fig:paper_average_dead_links} is the test reported in the original paper.}
 \label{fig:robustness_dead_links_failures}
 \end{figure}
 
@@ -335,7 +335,7 @@ In the last test shown in Figure~\ref{fig:robustness_hop_count_churn} we want to
   \caption{}
   \label{fig:paper_average_hop_count_churn}
 \end{subfigure}
-\caption{Average hop count under varying levels of churn. ~\ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_churn} is the test reported in the paper.}
+\caption{Average hop count under varying levels of churn. ~\ref{fig:average_hop_count_churn_1impl} represents our result in the first implementation (\getMetropolisHastingsNeighbour over all the connected peers),~\ref{fig:average_hop_count_churn_2impl} represent our result in the second implementation(\getMetropolisHastingsNeighbour over the base overlay) and~\ref{fig:paper_average_hop_count_churn} is the test reported in the original paper.}
 \label{fig:robustness_hop_count_churn}
 \end{figure}
 

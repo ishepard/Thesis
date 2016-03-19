@@ -37,7 +37,7 @@ We assume that each node in the network holds a numeric value and we want to cal
 
 The algorithm runs on all the peers and it contains one timer and one event-handler. Every $\delta$ time the node initiates an information exchange with a random neighbour \textit{q} by sending it a message containing the local state $s_p$ and waiting for a response with the remote state $s_q$. The other function instead waits for messages sent by an initiator and replies with the local state. The term push-pull refers to the fact that each information exchange is performed in a symmetric manner: both participants send and receive their states.
 
-We also have two other methods: the \getNeighbour and the \update. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The \update function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \update depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
+We also have two other methods: the \getNeighbour and the \update\textsf{\textit{()}}. The first one returns a random node from the view of \textit{p}, this function uses the underlying peer sampling service that we implemented before. The \update\textsf{\textit{()}} function instead computes a new local state based on the current local state and the remote state received during the information exchange. The output of \update\textsf{\textit{()}} depends on the specific aggregation function being implemented by the protocol. In this section, we limit the discussion to computing the average over the set of numbers distributed among the nodes, so the implementation will be $(s_p + s_q) / 2$. 
 
 The \init function initializes the local value of the node. We test two different implementations of this method: 
 \begin{enumerate}
@@ -49,14 +49,14 @@ As we can notice, in every round of the algorithm each node pushes its local val
 
 \section{Evaluation}
 \label{sec:evaluation_aggregation}
-We now evaluate the implementation described above, that is built on our peer sampling service, in other words using the \getNeighbour function over the view obtained from the \ac{WPSS}. The environment is the same as in the previous tests:
+We now evaluate the implementation described above, that is built on top of our peer sampling service, in other words using the \getNeighbour function over the view obtained from the \ac{WPSS}. The environment is the same as in the previous tests:
 \begin{itemize}
 	\item $N = 1000$ nodes
 	\item $\delta = 1s$
 	\item all the nodes join following a Poisson distribution with a mean inter-arrival time of 100 milliseconds
 \end{itemize}
 
-For the \ac{WPSS} we set $\Delta = 1000$ and the view size equals to 50. 
+For the \ac{WPSS} we set $\Delta = 1$ second and the view size equals to 50. 
 
 In Figure~\ref{fig:aggregation_average} is represented the average among all the nodes and also the minimum and maximum values. As we can see in the first rounds the average is varying, and the maximum and minimum values are quite higher. After some rounds, the average stabilizes to the right value while the minimum and maximum values converge quickly to 0. At round 15 all the nodes have the same value with an accuracy of at least 4 decimal place. 
 

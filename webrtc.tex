@@ -7,23 +7,23 @@ WebRTC~\cite{webrtc} is an Application Programming Interface (API) definition dr
 
 From the point of view of an end-user, WebRTC provides a much simpler way to have real-time conversations with other end-users. It is based on the web technology, thus accessible to any personal or enterprise computer. Without any installation and plugins, users may have exactly the same service which previous stand-alone desktop client provides. WebRTC makes these capabilities accessible to web developers via standard HTML5 tags and JavaScript APIs. For example, we can consider functionality similar to that offered by Skype\footnote{Skype is a free voice-over-IP service and instant messaging client, currently developed by the Microsoft Skype Division.}, but without installing any software or plugin. 
 
-The codecs and protocols used by WebRTC do a huge amount of work to make real-time communication possible, even over unreliable networks (e.g. packet loss concealment, echo cancellation, bandwidth adaptivity, image cleaning, ...)~\cite{started_with_webrtc}. However, WebRTC API still requires a lot of work in order to successfully create the connection between two peers. A fully explation of this process is covered in the Section~\ref{sec:webrtc_signaling}. However, in this project we use the EasyRTC~\cite{easyrtc} framework in order to simplify the creation of the network and its maintenance. More details about this in Section~\ref{sec:easy_tc}.
+The codecs and protocols used by WebRTC do a huge amount of work to make real-time communication possible, even over unreliable networks (e.g. packet loss concealment, echo cancellation, bandwidth adaptivity, image cleaning, etc.)~\cite{started_with_webrtc}. However, the WebRTC APIs still requires a lot of work in order to successfully create connections between peers. A fully explation of this process is covered in the Section~\ref{sec:webrtc_signaling}. However, in this project we use the EasyRTC~\cite{easyrtc} framework in order to simplify the creation of the network and its maintenance. More details about this in Section~\ref{sec:easy_tc}.
 
 \section{WebRTC APIs}
 \label{sec:webrtc_api}
 The main tasks of WebRTC are:
 \begin{itemize}
-	\item Acquiring audio and video: getting access to the microphone or camera, getting a streaming of media for either of them
-	\item Communicating audio and video: being able to connect to another WebRTC end-point through Internet, and send audio and video stream in real-time
-	\item Communicating generic data: not only audio and video, but for any arbitrary application data
+	\item Acquiring audio and video: getting access to the microphone or camera, getting a streaming of media for either of them.
+	\item Communicating audio and video: being able to connect to another WebRTC end-point through Internet, and send audio and video stream in real-time.
+	\item Communicating generic data: not only audio and video, but for any arbitrary application data.
 \end{itemize}
 These three main categories are translated in three Javascript APIs:
 \begin{itemize}
 	\item\textbf{\textsf{MediaStream} (aka getUserMedia)}.
 This API is not relevant for this project; in fact, the messages that the peers will exchange are not streams of audio and video, but simple JSON.
-	\item\textbf{\RTCPeerConnection}.
-This module enables peer-to-peer exchange of arbitrary data, with low latency and high throughput. This is what we use to send data between peers, but still they need to be connected in order to send and receive messages, so the DataChannel is built on top of a \textit{PeerConnection}.
 	\item\textbf{\RTCDataChannel}.
+This module enables peer-to-peer exchange of arbitrary data, with low latency and high throughput. This is what we use to send data between peers, but still they need to be connected in order to send and receive messages, so the DataChannel is built on top of a \textit{PeerConnection}.
+	\item\textbf{\RTCPeerConnection}.
 This is the WebRTC component that handles stable and efficient communication of streaming data between peers. Figure~\ref{fig:webrtcArchitecture} shows the WebRTC architecture diagram and the role of \RTCPeerConnection: the main thing to understand from this diagram is that \RTCPeerConnection shields web developers from the myriad complexities that lurk beneath. As explained before, we did not use WebRTC for audio and video streaming (the first two columns of the diagram); instead, the next sections focus on how to establish a connection using \RTCPeerConnection.
 \end{itemize}
 
@@ -67,7 +67,7 @@ The entire sequence of steps is the following:
 	\item Bob then uses the signaling mechanism to send his answer back to Alice.
 	\item Alice sets Bob's answer as the remote session description.
 \end{itemize}
-Offers and answers are communicated in Session Description Protocol format (SDP)~\cite{sdp}, which look like this:
+Offers and answers are exchanged using the Session Description Protocol format (SDP)~\cite{sdp}, which looks like this:
 \begin{Verbatim}[frame=single]
 v=0
 o=- 7614219274584779017 2 IN IP4 127.0.0.1
@@ -88,7 +88,7 @@ a=rtpmap:111 opus/48000/2
 ....
 \end{Verbatim}
 Using this format, the offer and answer messages contain all the necessary information to guarantee that the peers can communicate using the same codecs, resolution and other media capabilities. 
-Once this process is finished, and they both know the configuration of the other, they use the ICE Framework in order to establish the connection.
+Once this process is finished, and they both know the configuration of the other, they use the ICE Framework (explained in Section\ref{sec:webrtc_ice}) in order to establish the connection.
 
 \begin{figure}[ht]
   \centering
@@ -106,7 +106,7 @@ ICE tries to find the best path to connect peers. It tries all possibilities in 
 
 In other words, if the direct link fails (that is if the peers are behind a NAT), ICE uses the \STUN server. Figure~\ref{fig:stun} shows how it works: the server has one simple task, find the public IP address and port of the peer and send that address back as a response.  This process enables a WebRTC peer to get a publicly accessible address for itself, and then pass that to the other peer via a signaling mechanism, in order to set up a direct link.
 
-If that fails, \TURN servers can be used as a fallback. These servers have a conceptually simple task, to relay a stream, but unlike \STUN servers, they inherently consume a lot of bandwidth. This is in fact the last chance of the ICE Framework.
+If that fails, \TURN servers can be used as a fall-back. These servers have a conceptually simple task: to relay a stream. However, unlike \STUN servers, they inherently consume a lot of bandwidth. This is in fact the last chance of the ICE Framework.
 
 Figure~\ref{fig:turn} represents the complete schema.
 
@@ -127,22 +127,22 @@ The URLs of the \STUN and/or \TURN servers are (optionally) specified by the Web
 \section{Back to reality: EasyRTC Framework}
 \label{sec:easy_tc}
 As shown in the previous sections, establishing a connection between two peers in WebRTC is not so simple.
-As is often the case with software, with power comes complexity. WebRTC has a learning curve that is likely to hamper its use by web developers. To hide that complexity, Priologic\footnote{A team of Canadian software developers. More information: \url{https://www.priologic.com}} has built the EasyRTC framework.
+As it is often the case with software, with power comes complexity. WebRTC has a learning curve that is likely to hamper its use by web developers. To hide that complexity, Priologic\footnote{A team of Canadian software developers. More information: \url{https://www.priologic.com}} has built the EasyRTC framework.
 
-One of the most important feature of this framework is that, while the WebRTC API requires the developers to implement an involved message passing scheme between clients to establish the peer-to-peer connection, it already provides this schema~\cite{easyrtc} and it is completely hidden from the point of view of the web developers. It is really well documented and there already exists the EasyRTC server (the signaling server) that the nodes will contact in order to register themselves in the network.
+One of the most important feature of this framework is that, while the WebRTC API requires the developers to implement an involved message passing scheme between clients to establish the peer-to-peer connection, it already provides this schema~\cite{easyrtc} and it is completely hidden from the point of view of web developers. It is really well documented and there already exists the EasyRTC server (the signaling server) that the nodes will contact in order to register themselves in the network.
 
 EasyRTC is implemented in \textbf{Node.js} and it is available for free.
 
 \subsection{EasyRTC Server}
 \label{subsec:easyrtc_server}
 
-The main purpose of the server is to serve the requests of ``join the network'' from the nodes, so it is always listening on a specific port and all the nodes have to be able to reach it. Once a node is registered in the network, has an unique identifier that will be valid until it will disconnect. This ID will identify the node within the network, so the other nodes will have to use it in order to contact that specific peer. 
+The main purpose of the server is to serve the ``join'' requests from the nodes, so it is always listening on a specific port and all the nodes have to be able to reach it. Once a node is registered in the network, it gets an unique identifier that is valid until the disconnection. This ID will identify the node within the network, so the other nodes will have to use it in order to contact that specific peer. 
 
 When a node wants to connect to another one, the request pass through this server that will take care of creating the connection between them. Once the connection has been created, the nodes can communicate without passing through the server. 
 
-As explained before, the signaling mechanism is not part of the WebRTC: EasyRTC server by default uses WebSockets\footnote{EasyRTC server by default uses the \emph{socket.io} module. More information: \url{http://socket.io}}. One advantage of this technique is that through the heartbeats (already implemented inside WebSockets) the server knows which nodes are on-line and which ones have disconnected or crashed. In fact every $N$ seconds (by default $N = 25$ seconds), the server sends an heartbeat to the node and if the node does not reply within the heartbeat timeout (by default it is 60 seconds) it closes the connection with it. We use this technique to capture the failure of a node (it could be crashed or simply disconnected) and send to all the other nodes an advice. If a node was connected to the failed node, it has to replace the broken link with a new one and to do so it contacts the tracker (more information in Section~\ref{cha:tracker}).
+As explained before, the signaling mechanism is not part of the WebRTC: EasyRTC server by default uses WebSockets\footnote{EasyRTC server by default uses the \emph{socket.io} module. More information: \url{http://socket.io}}. One advantage of this technique is that through the heartbeats (already implemented inside WebSockets) the server knows which nodes are on-line and which ones have disconnected or crashed. In fact every $N$ seconds (by default $N=25$ seconds), the server sends an heartbeat to the node and if the node does not reply within the heartbeat timeout (60 seconds by default) it closes the connection with it. We use this technique to capture the failure of a node (it could be crashed or simply disconnected) and send to all the other nodes an advice. If a node was connected to the failed node, it has to replace the broken link with a new one and to do so it contacts the tracker (more information in Section~\ref{cha:tracker}).
 
 \section{SPOF}
-A final issue to be considered is related to the ``Single Point Of Failure'' (SPOF): in our system, if the EasyRTC server crashes or for some reason it is no more reachable from the outside world, no-one can join the network and, especially, no-one can capture the failure of another node (in fact this event is triggered only by the server). Handling this situation is not part of my project, since we start from the assumption that the server is always on-line.
+A final issue to be considered is related to the ``Single Point Of Failure'' (SPOF): in our system, if the EasyRTC server crashes or for some reason it is no more reachable from the outside world, no-one can join the network and, especially, no-one can capture the failure of another node (in fact this event is triggered only by the server). Handling this situation is not part of our project, since we start from the assumption that the server is always on-line.
 
 However, there is the possibility to add redundancy in the system, creating more than one server in order to have some of them that acts as backup servers. Then, each node decides which of them to contact, and if for some reasons that server goes down, it connects to another one. In this way the problem is solved, but as explained before this was not the task of the project, so for simplicity we implement only one server and we assume that is always reachable.
